@@ -1,44 +1,43 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class MouseLookScript : MonoBehaviour {
+[AddComponentMenu("Camera-Control/Smooth Mouse Look")]
+public class MouseLookScript : MonoBehaviour
+{
+    public float speedH = 2.0f;
+    public float speedV = 2.0f;
 
-    Vector2 mouse;
-    Vector2 smooth;
-    public float sensitivity = 6.0f;
-    public float damping = 2.0f;
+    public float damping;
 
-    public float cameraDamping = 0.5f;
+    private float yaw = 0.0f;
+    private float pitch = 0.0f;
+    private float timeCount = 0.0f;
 
-    GameObject player;
+    public GameObject Player;
+    public GameObject Helmet;
 
-
-
-	void Start () {
-        player = this.transform.parent.parent.gameObject;
-	}
-	
-
-	void LateUpdate () {
-
-        Cursor.visible = false;
+    void LateUpdate()
+    {
         Cursor.lockState = CursorLockMode.Locked;
 
-        var dir = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        yaw += speedH * Input.GetAxis("Mouse X")* Time.deltaTime * 60;
+        pitch -= speedV * Input.GetAxis("Mouse Y")* Time.deltaTime * 60;
 
-        dir = Vector2.Scale(dir, new Vector2(sensitivity * damping, sensitivity * damping));
-        smooth.x = Mathf.Lerp(smooth.x, dir.x, 1f / damping);
-        smooth.y = Mathf.Lerp(smooth.y, dir.y, 1f / damping);
+        var change = Quaternion.Euler(pitch, yaw, 0.0f);
 
-        Mathf.Clamp(smooth.x, -1, 1);
-        Mathf.Clamp(smooth.y, -1, 1);
+        transform.rotation = Quaternion.Slerp(transform.rotation, change, timeCount);
 
-        mouse += smooth;
+        Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
 
-        var holder = Quaternion.Euler( -mouse.y, mouse.x,0);
+        Helmet.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(pitch, yaw, 0.0f), timeCount*2);
+        Helmet.transform.position = gameObject.transform.position;
 
-        //transform.localRotation = Quaternion.Lerp(holder, Quaternion.AngleAxis(-mouse.y, Vector3.right), cameraDamping * Time.deltaTime);
-        player.transform.rotation = Quaternion.Lerp(transform.rotation, holder, cameraDamping * Time.deltaTime);
+        timeCount += Time.deltaTime * damping;
+
+        if (timeCount >= 0.2)
+            timeCount = 0;
+
+        print(timeCount);
     }
 }

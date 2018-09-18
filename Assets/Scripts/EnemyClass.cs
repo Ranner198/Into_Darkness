@@ -157,7 +157,6 @@ public class EnemyClass {
             rb.AddForce(shark.transform.forward * speed * Time.deltaTime * 60);
         else
         {
-            Debug.Log(true);
             Vector3 offAngle = new Vector3(0, 1, 1);
             rb.AddRelativeForce(offAngle * speed * Time.deltaTime * 60);
         }
