@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyClass {
 
-    private int health, damage, stateSystem;
+    private int health, damage, stateSystem, nextPos = 0;
     private float speed, timer;
-    private bool dead;
+    private bool dead, CircleMode = false;
     public string currentState;
     //public int spawnPoints, targetPoints;
 
@@ -160,60 +160,73 @@ public class EnemyClass {
         }
     }
     */
-    public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, float rotateSpeed, bool starting)
+    public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, float rotateSpeed)
     {
-        Vector3 dir = (Player.transform.position - shark.transform.position).normalized;
+        float Distance = (shark.transform.position - Player.transform.position).magnitude;
 
         Rigidbody rb;
 
         rb = shark.GetComponent<Rigidbody>();
 
-        int nextPos = 0;
-
-        float Distance = (shark.transform.position - Player.transform.position).magnitude;
-
-        //Vector3 forward = dir;
         rb.AddRelativeForce(Vector3.forward * speed * Time.deltaTime * 60);
 
-        if (Distance < 10) {
-
-            Debug.Log(nextPos);
-
-            shark.transform.LookAt(CircleArea[nextPos].transform.position);
-
-            Debug.Log((shark.transform.position - CircleArea[nextPos].transform.position).magnitude < .5f);
-
-            if ((shark.transform.position - CircleArea[nextPos].transform.position).magnitude < .5f) {
-                nextPos++;
-            }
-
-
-            if (starting)
+        if (Distance < 15) {
+            
+            if (!CircleMode)
             {
                 nextPos = StartCircle(CircleArea, shark);
-                starting = false;
             }
-        } else {
             
-            /*
-               if (rb.velocity.z > 6)
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 6.0f);
-                */
+            Vector3 Look_Towards_Next_Point = (CircleArea[nextPos].transform.position - shark.transform.position).normalized;
+
+            //Debug Draw Ray - Show Direction
+            Debug.DrawRay(shark.transform.position, Look_Towards_Next_Point * 9, Color.red);
+
+            Quaternion lookRotation = Quaternion.LookRotation(Look_Towards_Next_Point * Mathf.Rad2Deg);
+
+            //rotate us over time according to speed until we are in the required rotation
+            shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRotation, rotateSpeed * Time.deltaTime);     
+
+            if (Mathf.FloorToInt((shark.transform.position - CircleArea[nextPos].transform.position).magnitude) < 3) {
+                nextPos++;
+                if (nextPos > CircleArea.Length - 1)
+                    nextPos = 0;
+                Debug.Log("Next Point.");
+            }
+            //Move Forward            
+        } else {
+            Vector3 dir = (Player.transform.position - shark.transform.position).normalized;
+
+            CircleMode = false;
         }
 
     }
     public int StartCircle(GameObject[] CircleArea, GameObject shark) {
 
-        int startPoint = -1;
+        CircleMode = true;
+
+        int startPoint = 0;
 
         float distance = 999;
 
         for (int i = 0; i < CircleArea.Length; i++)
         {
-            if (distance > (shark.transform.position - CircleArea[i].transform.position).magnitude)
+            Debug.Log(i + ": " + (CircleArea[i].transform.position - shark.transform.position).magnitude);
+            if ((CircleArea[i].transform.position - shark.transform.position).magnitude < distance)
+            {               
+                distance = (CircleArea[i].transform.position - shark.transform.position).magnitude;
                 startPoint = i;
+            }
         }
+
+        if (startPoint > CircleArea.Length-1)
+            startPoint = 0;
+
         Debug.Log(startPoint);
         return startPoint;
+    }
+    //Debuging Purposes
+    public void SetNextPos(int nextPos) {
+        this.nextPos = nextPos;
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45064235, g: 0.49866682, b: 0.5645485, a: 1}
+  m_IndirectSpecularColor: {r: 0.4506423, g: 0.49866635, b: 0.5645469, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351628414}
   m_Layer: 0
-  m_Name: 04
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,7 +687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546817737}
   m_Layer: 0
-  m_Name: 01
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -929,7 +929,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.43
+      value: 11.698381
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -937,7 +937,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.3
+      value: -12.286371
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -945,7 +945,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8141553
+      value: -0.40457234
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalRotation.z
@@ -953,7 +953,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5806473
+      value: 0.914506
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_RootOrder
@@ -973,7 +973,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -109.008
+      value: -47.729004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5590da022b7c2048aa4b020084213d6, type: 3}
@@ -1116,7 +1116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1882363081}
   m_Layer: 0
-  m_Name: 02
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,7 +1144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957634126}
   m_Layer: 0
-  m_Name: 03
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

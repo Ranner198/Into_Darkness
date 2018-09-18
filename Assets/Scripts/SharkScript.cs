@@ -35,7 +35,9 @@ public class SharkScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        shark.Circle(CircleArea, player, gameObject, 0.8f, startingCircle);
+
+        shark.Circle(CircleArea, player, gameObject, 1f);
+
         /*
         if (shark.GetState() == 0)
         {
