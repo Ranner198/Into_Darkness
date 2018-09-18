@@ -38,6 +38,6 @@ public class MouseLookScript : MonoBehaviour
         if (timeCount >= 0.2)
             timeCount = 0;
 
-        print(timeCount);
+        //print(timeCount);
     }
 }

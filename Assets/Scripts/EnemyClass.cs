@@ -132,14 +132,12 @@ public class EnemyClass {
             rb.velocity = (dir * speed * Time.deltaTime * 60);
         }
     }
-
+    /*
     public void Circle(GameObject PlayerPos, GameObject shark, float attackSpeed, float rotateSpeed)
     {
         Quaternion lookRotation;
         //To change based on gameplay mechs
         Vector3 dir = (PlayerPos.transform.position - shark.transform.position).normalized;
-
-   
 
         //Debug Draw Ray - Show Direction
         Debug.DrawRay(shark.transform.position, dir * 9, Color.red);
@@ -161,6 +159,61 @@ public class EnemyClass {
             rb.AddRelativeForce(offAngle * speed * Time.deltaTime * 60);
         }
     }
+    */
+    public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, float rotateSpeed, bool starting)
+    {
+        Vector3 dir = (Player.transform.position - shark.transform.position).normalized;
 
-    //Add adjecency matrix for AI Pathfinding
+        Rigidbody rb;
+
+        rb = shark.GetComponent<Rigidbody>();
+
+        int nextPos = 0;
+
+        float Distance = (shark.transform.position - Player.transform.position).magnitude;
+
+        //Vector3 forward = dir;
+        rb.AddRelativeForce(Vector3.forward * speed * Time.deltaTime * 60);
+
+        if (Distance < 10) {
+
+            Debug.Log(nextPos);
+
+            shark.transform.LookAt(CircleArea[nextPos].transform.position);
+
+            Debug.Log((shark.transform.position - CircleArea[nextPos].transform.position).magnitude < .5f);
+
+            if ((shark.transform.position - CircleArea[nextPos].transform.position).magnitude < .5f) {
+                nextPos++;
+            }
+
+
+            if (starting)
+            {
+                nextPos = StartCircle(CircleArea, shark);
+                starting = false;
+            }
+        } else {
+            
+            /*
+               if (rb.velocity.z > 6)
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 6.0f);
+                */
+        }
+
+    }
+    public int StartCircle(GameObject[] CircleArea, GameObject shark) {
+
+        int startPoint = -1;
+
+        float distance = 999;
+
+        for (int i = 0; i < CircleArea.Length; i++)
+        {
+            if (distance > (shark.transform.position - CircleArea[i].transform.position).magnitude)
+                startPoint = i;
+        }
+        Debug.Log(startPoint);
+        return startPoint;
+    }
 }

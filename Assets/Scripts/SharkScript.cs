@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class SharkScript : MonoBehaviour {
 
-    EnemyClass shark = new EnemyClass(6, 100);
+    EnemyClass shark = new EnemyClass(12, 100);
 
     public GameObject player;
   
     public Terrain terrain;
 
+    public GameObject circleParent;
+    public GameObject[] CircleArea;
+
     public Transform targetPoints;
 
+    private bool startingCircle = false;
+
 	void Start () {
+
+        if (circleParent == null)
+            circleParent = GameObject.FindGameObjectWithTag("CircleArea");
+
+        for (int i = 0; i < CircleArea.Length; i++)
+        {
+            CircleArea[i] = circleParent.transform.GetChild(i).gameObject;
+        }
+
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
@@ -21,7 +35,7 @@ public class SharkScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        shark.Circle(player, gameObject, 30f, 0.8f);
+        shark.Circle(CircleArea, player, gameObject, 0.8f, startingCircle);
         /*
         if (shark.GetState() == 0)
         {
