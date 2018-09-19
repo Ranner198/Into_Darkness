@@ -9,12 +9,15 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 6.0f;
     private CharacterController cc;
 
+    public CameraShake cs;
+
 	void Start () {
         player.SetSpeed(speed);
         cc = GetComponent<CharacterController>();        
 	}
-	
-	void Update () {
+
+    void Update()
+    {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
 
         //Limit Speed
@@ -23,5 +26,7 @@ public class PlayerMovement : MonoBehaviour {
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         cc.Move(movement);
-	}
+        if (Input.GetKey(KeyCode.Q))
+            cs.shakecamera();
+    }
 }

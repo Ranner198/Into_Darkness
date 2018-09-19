@@ -17,6 +17,12 @@ public class MouseLookScript : MonoBehaviour
     public GameObject Player;
     public GameObject Helmet;
 
+    void Awake()
+    {
+        pitch = Player.transform.rotation.x;
+        yaw = Player.transform.rotation.y;
+    }
+
     void LateUpdate()
     {
         Cursor.lockState = CursorLockMode.Locked;

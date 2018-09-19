@@ -211,7 +211,6 @@ public class EnemyClass {
 
         for (int i = 0; i < CircleArea.Length; i++)
         {
-            Debug.Log(i + ": " + (CircleArea[i].transform.position - shark.transform.position).magnitude);
             if ((CircleArea[i].transform.position - shark.transform.position).magnitude < distance)
             {               
                 distance = (CircleArea[i].transform.position - shark.transform.position).magnitude;
@@ -222,7 +221,6 @@ public class EnemyClass {
         if (startPoint > CircleArea.Length-1)
             startPoint = 0;
 
-        Debug.Log(startPoint);
         return startPoint;
     }
     //Debuging Purposes
