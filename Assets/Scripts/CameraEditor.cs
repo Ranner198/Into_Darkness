@@ -17,9 +17,6 @@ public class CameraEditor : MonoBehaviour {
 
         isPlaying = EditorApplication.isPlaying;
 
-        print(dirLight.name);
-        print(dirLight.intensity);
-
         if (!isPlaying)
             dirLight.enabled = true;
         else

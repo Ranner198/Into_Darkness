@@ -170,7 +170,7 @@ public class EnemyClass {
 
         rb.AddRelativeForce(Vector3.forward * speed * Time.deltaTime * 60);
 
-        if (Distance < 15) {
+        if (Distance < 20) {
             
             if (!CircleMode)
             {

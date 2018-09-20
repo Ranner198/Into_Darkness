@@ -8,8 +8,6 @@ public class MouseLookScript : MonoBehaviour
     public float speedH = 2.0f;
     public float speedV = 2.0f;
 
-    public float damping;
-
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     private float timeCount = 0.0f;
@@ -32,18 +30,13 @@ public class MouseLookScript : MonoBehaviour
 
         var change = Quaternion.Euler(pitch, yaw, 0.0f);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, change, timeCount);
+        transform.rotation = Quaternion.Slerp(transform.rotation, change, Time.deltaTime);
 
         Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
 
-        Helmet.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(pitch, yaw, 0.0f), timeCount*2);
+        Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime);
         Helmet.transform.position = gameObject.transform.position;
 
-        timeCount += Time.deltaTime * damping;
-
-        if (timeCount >= 0.2)
-            timeCount = 0;
-
-        //print(timeCount);
+        timeCount += Time.deltaTime;
     }
 }
