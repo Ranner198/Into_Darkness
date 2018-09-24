@@ -6,8 +6,11 @@ public class EnemyClass {
 
     private int health, damage, stateSystem, nextPos = 0;
     private float speed, timer;
-    private bool dead, CircleMode = false;
+    private bool dead, CircleMode = false, AttackDir = false;
     public string currentState;
+
+    //Attack Point
+    Vector3 dir;
     //public int spawnPoints, targetPoints;
 
     public EnemyClass(float speed, int health)
@@ -65,6 +68,8 @@ public class EnemyClass {
     public void RandomState() {
         this.stateSystem = Random.Range(0, 3);
 
+        AttackDir = false;
+
         if (stateSystem == 0)
         {
             currentState = "passive";
@@ -110,10 +115,17 @@ public class EnemyClass {
         this.timer -= Time.deltaTime;
     }
 
+    private Vector3 GetDirection(GameObject player, GameObject shark) {
+        return -(shark.transform.position - player.transform.position).normalized;
+    }
+
     public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed) {
 
-        //To change based on gameplay mechs
-        Vector3 dir = -(shark.transform.position - PlayerPos.transform.position).normalized;
+        if (!AttackDir)
+        {
+            dir = GetDirection(PlayerPos, shark);
+            AttackDir = true;
+        }
 
         Rigidbody rb;
 
@@ -130,6 +142,13 @@ public class EnemyClass {
         else
         {
             rb.velocity = (dir * speed * Time.deltaTime * 60);
+        }
+
+        //Debug.Log(Distance);
+
+        if (Distance < 2)
+        {
+            dir *= -1;
         }
     }
     /*

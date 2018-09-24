@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
     PlayerClass player = new PlayerClass(1.0f, 100, 3);
 
-    public float speed = 6.0f;
+    public float speed = 6.0f, fallSpeed = 2.0f;
     private CharacterController cc;
 
     public CameraShake cs;
@@ -18,10 +18,11 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * speed, -fallSpeed, Input.GetAxis("Vertical") * speed);
 
         //Limit Speed
-        movement = Vector3.ClampMagnitude(movement, speed);
+        movement.x = Mathf.Clamp(movement.x, -speed, speed);
+        movement.z = Mathf.Clamp(movement.z, -speed, speed);
 
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);

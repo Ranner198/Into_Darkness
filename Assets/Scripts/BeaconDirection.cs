@@ -6,7 +6,7 @@ public class BeaconDirection : MonoBehaviour {
 
     private GameObject target, player;
 
-    public string subName = "Sub", playerName = "player";
+    public string subName = "Sub", playerName = "Player";
 
     public Terrain terrain;
 
@@ -18,7 +18,7 @@ public class BeaconDirection : MonoBehaviour {
     }
 
 	void Update () {
-
+        /*
         Vector3 Direction = -(player.transform.position - target.transform.position).normalized;
 
         Distance = (player.transform.position - target.transform.position).magnitude;
@@ -33,6 +33,6 @@ public class BeaconDirection : MonoBehaviour {
         {
             Debug.DrawRay(player.transform.position, Direction * 9, Color.red);
         }
-        
+        */
     }
 }

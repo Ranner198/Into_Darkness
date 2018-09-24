@@ -36,41 +36,44 @@ public class SharkScript : MonoBehaviour {
 	
 	void Update () {
 
-        shark.Circle(CircleArea, player, gameObject, 1f);
 
-        /*
         if (shark.GetState() == 0)
         {
             //passive
+            print("passive");
         }
         else if (shark.GetState() == 1)
-        {
+        {           
             //circleing
-            shark.Circle(player, gameObject, terrain, 6f);
+            shark.Circle(CircleArea, player, gameObject, 1f);
+            print("Circle");
         }
         else if (shark.GetState() == 2)
-        {
+        {         
             //agressive/Attacking
             shark.Attack(player, gameObject, terrain, 6f);
+            print("attacking");
         }
         else
         {
             //scared
+            print("scared");
         }
 
-        
+        Input.GetKeyDown(KeyCode.P);
+        shark.SetState(2);
 
         //Timer Controller
         if (shark.GetTimer() <= 0)
         {
             shark.RandomTimer();
             shark.RandomState();
-            print(shark.GetState());
-            print(shark.GetTimer());
+            //print(shark.GetState());
+            //print(shark.GetTimer());
         }
         //Reset Timer
         if (shark.GetTimer() > 0)
             shark.CountDown();
-            */
+
     }
 }
