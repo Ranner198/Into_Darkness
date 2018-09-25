@@ -17,11 +17,7 @@ public class SharkScript : MonoBehaviour {
 
     private bool startingCircle = false;
 
-    private Animator anim;
-
 	void Start () {
-
-        anim = GetComponent<Animator>();
 
         if (circleParent == null)
             circleParent = GameObject.FindGameObjectWithTag("CircleArea");
@@ -45,34 +41,23 @@ public class SharkScript : MonoBehaviour {
         {
             //passive
             print("passive");
-            //anim.Play();
         }
         else if (shark.GetState() == 1)
         {           
             //circleing
             shark.Circle(CircleArea, player, gameObject, 1f);
             print("Circle");
-            //Just keep swimming
-            //anim.Play();
         }
         else if (shark.GetState() == 2)
         {         
             //agressive/Attacking
             shark.Attack(player, gameObject, terrain, 6f);
             print("attacking");
-
-            if (shark.DistanceFromPlayer(player, gameObject) < 3) {
-                //Attack Anim
-                //anim.Play();
-            }
         }
-        else if (shark.GetState() == 3)
+        else
         {
             //scared
             print("scared");
-            shark.Retreat(player, gameObject, terrain, 6f);
-            //Retreat
-            //anim.Play();
         }
 
         Input.GetKeyDown(KeyCode.P);
