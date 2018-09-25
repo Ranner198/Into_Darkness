@@ -82,9 +82,9 @@ public class EnemyClass {
         {
             currentState = "agressive";
         }
-        else
-        {
-            currentState = "scared";
+        else if (stateSystem == 3)
+        { 
+            currentState = "Retreat";
         }
     }
 
@@ -119,6 +119,28 @@ public class EnemyClass {
         return -(shark.transform.position - player.transform.position).normalized;
     }
 
+    public float DistanceFromPlayer(GameObject player, GameObject shark) {
+        return (shark.transform.position - player.transform.position).magnitude;
+    }
+
+    public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed) {
+
+        Vector3 dir = -1 * (GetDirection(PlayerPos, shark));
+
+        Rigidbody rb;
+
+        rb = shark.GetComponent<Rigidbody>();
+
+        rb.velocity = (-dir * speed * Time.deltaTime * 15);
+
+        Vector3 rot = (PlayerPos.transform.position - shark.transform.position).normalized;
+
+        Quaternion lookRotation = Quaternion.LookRotation(rot * Mathf.Rad2Deg);
+
+        //rotate us over time according to speed until we are in the required rotation
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRotation, rotateSpeed * Time.deltaTime);
+    }
+
     public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed) {
 
         if (!AttackDir)
@@ -131,24 +153,22 @@ public class EnemyClass {
 
         rb = shark.GetComponent<Rigidbody>();
 
-        float Distance = (shark.transform.position - PlayerPos.transform.position).magnitude;
+        float Distance = DistanceFromPlayer(PlayerPos, shark);
 
         float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
 
+        if (Distance < 3)
+        {
+            dir *= -1;
+        }
+
         if (Distance > MapHypotnuse / 2)
         {
-            rb.velocity = (-dir * speed * Time.deltaTime * 60);
+            rb.velocity = (-dir * speed * Time.deltaTime * 15);
         }
         else
         {
-            rb.velocity = (dir * speed * Time.deltaTime * 60);
-        }
-
-        //Debug.Log(Distance);
-
-        if (Distance < 2)
-        {
-            dir *= -1;
+            rb.velocity = (dir * speed * Time.deltaTime * 15);
         }
     }
     /*
