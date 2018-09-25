@@ -2,18 +2,18 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour
-{
+public class PlayerHealth : MonoBehaviour {
+
     public int startingHealth = 100;
-    public Slider healthBar;
     public Image damageImage;
+    public Text healthText;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
     AudioSource playerAudio;
     PlayerMovement playerMovement;
-    PlayerClass player;
+    PlayerClass player = new PlayerClass(1.0f, 100, 3);
     bool dead;
     bool damaged;
 
@@ -21,17 +21,19 @@ public class PlayerHealth : MonoBehaviour
     void Awake()
     {
         //set components
-        player = GetComponent<PlayerClass>();
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
 
         //set starting health of 100
         player.SetHealth(startingHealth);
+        SetHealthText();
     }
 
 
     void Update()
     {
+        SetHealthText();
+
         if (damaged)
         {
             damageImage.color = flashColour;
@@ -50,9 +52,8 @@ public class PlayerHealth : MonoBehaviour
         damaged = true;
 
         player.TakeDamage(damage);
-        healthBar.value = player.GetHealth();
 
-        playerAudio.Play();
+        //playerAudio.Play();
 
         dead = player.isDead();
 
@@ -68,8 +69,13 @@ public class PlayerHealth : MonoBehaviour
         dead = true;
 
         playerAudio.clip = deathClip;
-        playerAudio.Play();
+        //playerAudio.Play();
 
         playerMovement.enabled = false;
+    }
+
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + player.GetHealth();
     }
 }

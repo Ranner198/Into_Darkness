@@ -2,15 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class EnemyHealth : MonoBehaviour
-{
+public class EnemyHealth : MonoBehaviour {
+
     public int startingHealth = 100;
-    public Slider healthBar;
-    public Image damageImage;
     public AudioClip deathClip;
 
     AudioSource enemyAudio;
-    EnemyClass enemy;
+    EnemyClass enemy = new EnemyClass(12, 100);
     bool dead;
     bool damaged;
 
@@ -18,27 +16,18 @@ public class EnemyHealth : MonoBehaviour
     void Awake()
     {
         //set components
-        enemy = GetComponent<EnemyClass>();
         enemyAudio = GetComponent<AudioSource>();
 
         //set starting health of 100
         enemy.SetHealth(startingHealth);
     }
 
-
-    void Update()
-    {
-    }
-
-
     public void TakeDamage(int damage)
     {
         damaged = true;
 
         enemy.TakeDamage(damage);
-        healthBar.value = enemy.GetHealth();
-
-        enemyAudio.Play();
+        //enemyAudio.Play();
 
         dead = enemy.isDead();
 
@@ -54,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
         dead = true;
 
         enemyAudio.clip = deathClip;
-        enemyAudio.Play();
+        //enemyAudio.Play();
 
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerClass {
 
     private int health, ammo;
-    private float speed, difficultyModifier, oxygenLevels;
+    private float speed, difficultyModifier;
+    private float oxygenLevels;
     private bool dead;
 
     public PlayerClass(float speed, int health, int ammo) {
