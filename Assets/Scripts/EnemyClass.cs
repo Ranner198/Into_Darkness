@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyClass {
+public class EnemyClass
+{
 
     private int health, damage, stateSystem, nextPos = 0;
     private float speed, timer;
@@ -65,7 +66,8 @@ public class EnemyClass {
     }
 
     //Randomly pick the state
-    public void RandomState() {
+    public void RandomState()
+    {
         this.stateSystem = Random.Range(0, 3);
 
         AttackDir = false;
@@ -82,44 +84,84 @@ public class EnemyClass {
         {
             currentState = "agressive";
         }
-        else
+        else if (stateSystem == 3)
         {
-            currentState = "scared";
+            currentState = "Retreat";
         }
     }
 
     //Debug set the state
-    public void SetState(int num) {
+    public void SetState(int num)
+    {
         this.stateSystem = num;
     }
 
-    public int GetState() {
+    public int GetState()
+    {
         return this.stateSystem;
     }
 
     //State Mechine change timer
-    public void RandomTimer() {
+    public void RandomTimer()
+    {
         this.timer = Random.Range(2, 25);
     }
 
     //Get tha timer
-    public float GetTimer() {
+    public float GetTimer()
+    {
         return this.timer;
     }
 
-    public void SetTimer(float timer) {
+    public void SetTimer(float timer)
+    {
         this.timer = timer;
     }
 
-    public void CountDown() {
+    public void CountDown()
+    {
         this.timer -= Time.deltaTime;
     }
 
-    private Vector3 GetDirection(GameObject player, GameObject shark) {
+    private Vector3 GetDirection(GameObject player, GameObject shark)
+    {
         return -(shark.transform.position - player.transform.position).normalized;
     }
 
-    public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed) {
+    public float DistanceFromPlayer(GameObject player, GameObject shark)
+    {
+        return (shark.transform.position - player.transform.position).magnitude;
+    }
+
+    public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain)
+    {
+        //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
+        Rigidbody rb;
+        rb = shark.GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0, 0, speed * Time.deltaTime * 60);
+    }
+
+    public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed)
+    {
+
+        Vector3 dir = (GetDirection(PlayerPos, shark));
+
+        Rigidbody rb;
+
+        rb = shark.GetComponent<Rigidbody>();
+
+        rb.velocity = (-dir * speed * Time.deltaTime * 15);
+
+        Vector3 rot = (PlayerPos.transform.position - shark.transform.position).normalized;
+
+        Quaternion lookRotation = Quaternion.LookRotation(rot * Mathf.Rad2Deg);
+
+        //rotate us over time according to speed until we are in the required rotation
+        shark.transform.rotation = Quaternion.Euler(-GetDirection(PlayerPos, shark));
+    }
+
+    public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed)
+    {
 
         if (!AttackDir)
         {
@@ -131,24 +173,25 @@ public class EnemyClass {
 
         rb = shark.GetComponent<Rigidbody>();
 
-        float Distance = (shark.transform.position - PlayerPos.transform.position).magnitude;
+        float Distance = DistanceFromPlayer(PlayerPos, shark);
 
         float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
 
+        //rotate us over time according to speed until we are in the required rotation
+        shark.transform.rotation = Quaternion.Euler(GetDirection(PlayerPos, shark));
+
+        if (Distance < 2.5)
+        {
+            dir *= -1;
+        }
+
         if (Distance > MapHypotnuse / 2)
         {
-            rb.velocity = (-dir * speed * Time.deltaTime * 60);
+            rb.velocity = (-dir * speed * Time.deltaTime * 15);
         }
         else
         {
-            rb.velocity = (dir * speed * Time.deltaTime * 60);
-        }
-
-        //Debug.Log(Distance);
-
-        if (Distance < 2)
-        {
-            dir *= -1;
+            rb.velocity = (dir * speed * Time.deltaTime * 15);
         }
     }
     /*
@@ -179,7 +222,8 @@ public class EnemyClass {
         }
     }
     */
-    public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, float rotateSpeed)
+
+    public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, Terrain terrain, float rotateSpeed)
     {
         float Distance = (shark.transform.position - Player.transform.position).magnitude;
 
@@ -189,14 +233,22 @@ public class EnemyClass {
 
         rb.AddRelativeForce(Vector3.forward * speed * Time.deltaTime * 60);
 
-        if (Distance < 20) {
-            
+        if (Distance < 20)
+        {
+
             if (!CircleMode)
             {
                 nextPos = StartCircle(CircleArea, shark);
             }
-            
-            Vector3 Look_Towards_Next_Point = (CircleArea[nextPos].transform.position - shark.transform.position).normalized;
+
+            float terrainHeight = terrain.SampleHeight(CircleArea[nextPos].transform.position) + 1;
+
+            if (Player.transform.position.y > terrainHeight)
+                terrainHeight = Player.transform.position.y;
+
+            Vector3 sampledHeightPosition = new Vector3(CircleArea[nextPos].transform.position.x, terrainHeight, CircleArea[nextPos].transform.position.z);
+
+            Vector3 Look_Towards_Next_Point = (sampledHeightPosition - shark.transform.position).normalized;
 
             //Debug Draw Ray - Show Direction
             Debug.DrawRay(shark.transform.position, Look_Towards_Next_Point * 9, Color.red);
@@ -204,23 +256,27 @@ public class EnemyClass {
             Quaternion lookRotation = Quaternion.LookRotation(Look_Towards_Next_Point * Mathf.Rad2Deg);
 
             //rotate us over time according to speed until we are in the required rotation
-            shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRotation, rotateSpeed * Time.deltaTime);     
+            shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRotation, rotateSpeed * Time.deltaTime);
 
-            if (Mathf.FloorToInt((shark.transform.position - CircleArea[nextPos].transform.position).magnitude) < 3) {
+            if (Mathf.FloorToInt((shark.transform.position - sampledHeightPosition).magnitude) < 3)
+            {
                 nextPos++;
                 if (nextPos > CircleArea.Length - 1)
                     nextPos = 0;
                 Debug.Log("Next Point.");
             }
             //Move Forward            
-        } else {
+        }
+        else
+        {
             Vector3 dir = (Player.transform.position - shark.transform.position).normalized;
 
             CircleMode = false;
         }
 
     }
-    public int StartCircle(GameObject[] CircleArea, GameObject shark) {
+    public int StartCircle(GameObject[] CircleArea, GameObject shark)
+    {
 
         CircleMode = true;
 
@@ -231,19 +287,20 @@ public class EnemyClass {
         for (int i = 0; i < CircleArea.Length; i++)
         {
             if ((CircleArea[i].transform.position - shark.transform.position).magnitude < distance)
-            {               
+            {
                 distance = (CircleArea[i].transform.position - shark.transform.position).magnitude;
                 startPoint = i;
             }
         }
 
-        if (startPoint > CircleArea.Length-1)
+        if (startPoint > CircleArea.Length - 1)
             startPoint = 0;
 
         return startPoint;
     }
     //Debuging Purposes
-    public void SetNextPos(int nextPos) {
+    public void SetNextPos(int nextPos)
+    {
         this.nextPos = nextPos;
     }
 }
