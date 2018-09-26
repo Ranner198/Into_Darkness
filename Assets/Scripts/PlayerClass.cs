@@ -42,7 +42,7 @@ public class PlayerClass {
 
     //✔ tha Health 
     public bool isDead() {
-        if (health <= 0)
+        if (health <= 0 || oxygenLevels <= 0)
         {
             dead = true;
         } else {
