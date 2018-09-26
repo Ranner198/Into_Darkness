@@ -78,4 +78,18 @@ public class PlayerHealth : MonoBehaviour {
     {
         healthText.text = "Health: " + player.GetHealth();
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        TakeDamage(5);
+        print("enter trigger with _player");
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        print("exit trigger with _player");
+    }
+
+
 }
+

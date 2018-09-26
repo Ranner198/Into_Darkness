@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
 
-    private Animator animator;
-    private GameObject player;
-    private bool collidedWithPlayer;
+    public Animator animator;
+    public GameObject player;
+    public bool collidedWithPlayer;
+
+    PlayerHealth health;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
         animator = GetComponent<Animator>();
     }
 
@@ -21,20 +24,20 @@ public class EnemyAttack : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
-        {
-            animator.SetBool("IsNearPlayer", true);
-        }
+        collidedWithPlayer = true;
+
+        Attack();
         print("enter trigger with _player");
     }
-
+    /*
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject == player)
         {
             collidedWithPlayer = true;
+            print("enter collided with _player");
         }
-        print("enter collided with _player");
+        
     }
 
     void OnCollisionExit(Collision other)
@@ -45,12 +48,12 @@ public class EnemyAttack : MonoBehaviour {
         }
         print("exit collided with _player");
     }
-
+    */
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject == player)
         {
-            animator.SetBool("IsNearPlayer", false);
+            //animator.SetBool("IsNearPlayer", false);
         }
         print("exit trigger with _player");
     }
