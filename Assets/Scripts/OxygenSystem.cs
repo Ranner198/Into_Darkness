@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OxygenSystem : MonoBehaviour {
 
@@ -49,6 +50,8 @@ public class OxygenSystem : MonoBehaviour {
         //playerAudio.Play();
 
         playerMovement.enabled = false;
+        SceneManager.LoadScene("GameOver");
+
     }
 
     void SetOxygenText()
