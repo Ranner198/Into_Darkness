@@ -82,8 +82,12 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        TakeDamage(5);
-        print("enter trigger with _player");
+        if (other.gameObject.tag == "Shark")
+        {
+            TakeDamage(5);
+            print("damage dealt");
+        }
+
     }
 
     void OnTriggerExit(Collider other)

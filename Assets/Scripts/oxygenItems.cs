@@ -13,4 +13,13 @@ public class oxygenItems : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            other.GetComponent<OxygenSystem>().startingOxygen += 100;
+            Destroy(gameObject);
+        }
+    }
 }
