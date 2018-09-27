@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class PlayerHealth : MonoBehaviour
         //playerAudio.Play();
 
         playerMovement.enabled = false;
+
+        SceneManager.LoadScene("GameOver");
     }
 
     void SetHealthText()
