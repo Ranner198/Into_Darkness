@@ -138,7 +138,7 @@ public class EnemyClass
         //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
         Rigidbody rb;
         rb = shark.GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, speed * Time.deltaTime * 60);
+        rb.velocity = -1 * Vector3.forward * speed * Time.deltaTime * 10;
     }
 
     public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed)
@@ -178,7 +178,9 @@ public class EnemyClass
         float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
 
         //rotate us over time according to speed until we are in the required rotation
-        shark.transform.rotation = Quaternion.Euler(GetDirection(PlayerPos, shark));
+        Vector3 fixDir = GetDirection(PlayerPos, shark);
+
+        shark.transform.rotation = Quaternion.Euler(fixDir.x, fixDir.y - 180, fixDir.z);
 
         if (Distance < 2.5)
         {
