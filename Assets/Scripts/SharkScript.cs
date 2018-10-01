@@ -20,15 +20,20 @@ public class SharkScript : MonoBehaviour
 
     private Animator anim;
 
-    private int lastState;
+    private int lastState = -1;
 
     private PlayerHealth playerHealth;
 
+    public bool decisionTime = false;
+
     void Start()
     {
-        playerHealth = player.GetComponent<PlayerHealth>();
+        CircleArea = new GameObject[4];
+        //playerHealth = player.GetComponent<PlayerHealth>();
 
-        shark.RandomState();
+        shark.SetState(0);
+        shark.GenerateAggro();
+        print(shark.GetAggro());
 
         anim = GetComponent<Animator>();
 
@@ -41,7 +46,7 @@ public class SharkScript : MonoBehaviour
         }
 
         if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag("Player").transform.GetChild(2).gameObject;
 
         if (terrain == null)
             terrain = FindObjectOfType<Terrain>();
@@ -49,7 +54,8 @@ public class SharkScript : MonoBehaviour
 
     void Update()
     {
-
+        transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
+        print(shark.GetTimer());
         //print(shark.GetTimer());
 
         if (shark.GetState() == 0)
@@ -63,6 +69,11 @@ public class SharkScript : MonoBehaviour
         {
             //circleing
             shark.Circle(CircleArea, player, gameObject, terrain, 1f);
+            if (decisionTime == false)
+            {
+                shark.RandomTimer();
+                decisionTime = true;
+            }
             print("Circle");
             //Just keep swimming
             anim.Play("Passive");
@@ -70,14 +81,14 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 6f);
+            shark.Attack(player, gameObject, terrain, 50f);
             print("attacking");
 
             if (shark.DistanceFromPlayer(player, gameObject) < 3)
             {
                 //Attack Anim
                 //anim.Play();              
-                playerHealth.TakeDamage(25);
+                //playerHealth.TakeDamage(25);
             }
         }
         else if (shark.GetState() == 3)
@@ -86,41 +97,39 @@ public class SharkScript : MonoBehaviour
             print("scared");
             shark.Retreat(player, gameObject, terrain, 6f);
             //Retreat
-            anim.Play("Retreat");
+            anim.Play("Retreat");           
         }
 
-        if (shark.DistanceFromPlayer(player, gameObject) < 25 && shark.GetState() == 0)
+        if (shark.DistanceFromPlayer(player, gameObject) < 20 && shark.GetState() == 0 && lastState != 1)
         {
             shark.SetState(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-            shark.SetState(2);
+        //Count Down
+        if (shark.GetTimer() >= 0)
+            shark.CountDown();
 
-        //Timer Controller
-        if (shark.GetTimer() <= 0)
+        //make a choice of wheather or not to attack
+        if (shark.GetTimer() <= 0 && decisionTime)
         {
             lastState = shark.GetState();
-            shark.RandomTimer();
-            shark.RandomState();
+            decisionTime = false;
+            var aggro = shark.GetAggro();
 
-            /*
-            while (lastState != 1)
+            if (aggro >= 50)
             {
-                if (shark.GetState() == 2 || shark.GetState() == 3)
-                {
-                    shark.SetState(0);
-                    return;
-                }
-                return;
+                shark.SetState(2);
             }
-            */
-
-            //print(shark.GetState());            
+            else if (aggro < 50 && aggro > 25)
+            {
+                shark.SetState(0);
+            }
+            else if (aggro <= 25)
+            {
+                shark.SetState(3);
+            }           
         }
         //Reset Timer
-        if (shark.GetTimer() > 0)
-            shark.CountDown();
 
     }
 }

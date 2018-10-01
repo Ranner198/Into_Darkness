@@ -14,7 +14,7 @@ public class BeaconDirection : MonoBehaviour {
 
     void Start () {
         target = GameObject.FindGameObjectWithTag(subName);
-        player = GameObject.FindGameObjectWithTag(playerName);
+        player = GameObject.FindGameObjectWithTag(playerName).transform.GetChild(2).gameObject;
     }
 
 	void Update () {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyClass
 {
 
-    private int health, damage, stateSystem, nextPos = 0;
+    private int health, damage, stateSystem, nextPos = 0, aggro;
     private float speed, timer;
     private bool dead, CircleMode = false, AttackDir = false;
     public string currentState;
@@ -49,6 +49,21 @@ public class EnemyClass
     public void TakeDamage(int damage)
     {
         this.health -= damage;
+    }
+
+    public void GenerateAggro()
+    {
+        this.aggro = Random.Range(0, 100);
+    }
+
+    public void SetAggro(int aggro)
+    {
+        this.aggro = aggro;
+    }
+
+    public int GetAggro()
+    {
+        return this.aggro;
     }
 
     //✔ tha Health 
@@ -104,7 +119,7 @@ public class EnemyClass
     //State Mechine change timer
     public void RandomTimer()
     {
-        this.timer = Random.Range(2, 25);
+        this.timer = Random.Range(6, 25);
     }
 
     //Get tha timer
@@ -127,10 +142,29 @@ public class EnemyClass
     {
         return -(shark.transform.position - player.transform.position).normalized;
     }
+    private Vector3 GetDirection(Vector3 loc, GameObject shark)
+    {
+        return -(shark.transform.position - loc).normalized;
+    }
 
     public float DistanceFromPlayer(GameObject player, GameObject shark)
     {
         return (shark.transform.position - player.transform.position).magnitude;
+    }
+
+    public Vector3 StayOnTopOfTerrain(Terrain terrain, GameObject shark) {
+
+        Vector3 sharkPos = shark.transform.position;
+
+        float heightMap = terrain.SampleHeight(sharkPos) + 50;
+
+        Vector3 returnVal = sharkPos;
+
+        if (sharkPos.y > heightMap) {
+            returnVal = Vector3.Slerp(shark.transform.position, new Vector3(shark.transform.position.x, heightMap, shark.transform.position.z), Time.deltaTime);
+        }
+
+        return returnVal;
     }
 
     public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain)
@@ -178,9 +212,14 @@ public class EnemyClass
         float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
 
         //rotate us over time according to speed until we are in the required rotation
-        Vector3 fixDir = GetDirection(PlayerPos, shark);
+        Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
 
-        shark.transform.rotation = Quaternion.Euler(fixDir.x, fixDir.y - 180, fixDir.z);
+        Vector3 fixDir = GetDirection(HeadPos, shark);
+
+        Quaternion lookRot = Quaternion.LookRotation(fixDir * Mathf.Rad2Deg);
+
+        //rotate us over time according to speed until we are in the required rotation
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
 
         if (Distance < 2.5)
         {
@@ -189,11 +228,11 @@ public class EnemyClass
 
         if (Distance > MapHypotnuse / 2)
         {
-            rb.velocity = (-dir * speed * Time.deltaTime * 15);
+            rb.velocity = (-dir * speed * Time.deltaTime * attackSpeed * 15);
         }
         else
         {
-            rb.velocity = (dir * speed * Time.deltaTime * 15);
+            rb.velocity = (dir * speed * Time.deltaTime * attackSpeed * 15);
         }
     }
     /*
@@ -243,7 +282,7 @@ public class EnemyClass
                 nextPos = StartCircle(CircleArea, shark);
             }
 
-            float terrainHeight = terrain.SampleHeight(CircleArea[nextPos].transform.position) + 1;
+            float terrainHeight = terrain.SampleHeight(CircleArea[nextPos].transform.position) + 2;
 
             if (Player.transform.position.y > terrainHeight)
                 terrainHeight = Player.transform.position.y;
