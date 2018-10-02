@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SharkScript : MonoBehaviour
 {
-
-    EnemyClass shark = new EnemyClass(12, 100);
+    public EnemyClass shark = new EnemyClass(12, 100);
 
     public GameObject player;
 
@@ -25,7 +24,7 @@ public class SharkScript : MonoBehaviour
     private PlayerHealth playerHealth;
 
     public bool decisionTime = false;
-
+    public bool debugMode = false;
     void Start()
     {
         CircleArea = new GameObject[4];
@@ -62,7 +61,8 @@ public class SharkScript : MonoBehaviour
         {
             //passive
             shark.Passive(player, gameObject, terrain, 20);
-            print("passive");
+            if(debugMode)
+                print("passive");
             anim.Play("Passive");
         }
         else if (shark.GetState() == 1)
@@ -74,7 +74,8 @@ public class SharkScript : MonoBehaviour
                 shark.RandomTimer();
                 decisionTime = true;
             }
-            print("Circle");
+            if (debugMode)
+                print("Circle");
             //Just keep swimming
             anim.Play("Passive");
         }
@@ -82,8 +83,9 @@ public class SharkScript : MonoBehaviour
         {
             //agressive/Attacking
             shark.Attack(player, gameObject, terrain, 3f);
-            print("attacking");
-            anim.Play("Retreat");
+            if (debugMode)
+                print("attacking");
+            anim.Play("Attack");
             //playerHealth.TakeDamage(25);
             if (shark.DistanceFromPlayer(player, gameObject) < 3)
             {
@@ -94,7 +96,8 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 3)
         {
             //scared
-            print("scared");
+            if (debugMode)
+                print("scared");
             shark.Retreat(player, gameObject, terrain, 6f);
             //Retreat
             anim.Play("Retreat");           
@@ -103,8 +106,9 @@ public class SharkScript : MonoBehaviour
         if (shark.DistanceFromPlayer(player, gameObject) < 30 && shark.GetState() == 0 && lastState != 1)
         {
             shark.SetState(1);
-        }
-
+            //audioSource.PlayOneShot(Sound[1]);
+        }      
+        
         //Count Down
         if (shark.GetTimer() >= 0)
             shark.CountDown();
@@ -129,7 +133,5 @@ public class SharkScript : MonoBehaviour
                 shark.SetState(3);
             }           
         }
-        //Reset Timer
-
     }
 }

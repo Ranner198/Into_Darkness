@@ -8,6 +8,7 @@ TagManager:
   - CircleArea
   - Shark
   - Terrain
+  - Tracking
   layers:
   - Default
   - TransparentFX
