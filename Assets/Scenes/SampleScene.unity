@@ -196,9 +196,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 28322487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5942a30903606ab4f875d76cd1c00619, type: 3}
+  m_Script: {fileID: 11500000, guid: 81ea5fdfe71c828449994a947a3889e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  ammo: 5
+  ammoText: {fileID: 1170458971}
+  spear: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  fpsCam: {fileID: 0}
 --- !u!1 &50368362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,7 +5866,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: ammoText
 --- !u!222 &1170458972
 CanvasRenderer:
   m_ObjectHideFlags: 0
