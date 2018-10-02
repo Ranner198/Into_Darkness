@@ -36,7 +36,9 @@ public class MouseLookScript : MonoBehaviour
         Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
 
         Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime * helmentTurnSpeed);
-        Helmet.transform.position = gameObject.transform.position;
+
+        Helmet.transform.position = transform.position;
+        //Helmet.transform.position = transform.TransformPoint(Vector3.back/6);
 
         timeCount += Time.deltaTime;
     }

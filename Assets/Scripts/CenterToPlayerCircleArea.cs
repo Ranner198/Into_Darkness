@@ -8,7 +8,11 @@ public class CenterToPlayerCircleArea : MonoBehaviour {
 
 	void Update () {
 
-        transform.position = Player.transform.position;
+        Vector3 moveUp = Player.transform.position;
+
+        moveUp.y += 5;
+
+        transform.position = moveUp;
 
 	}
 }

@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 4808581382121934}
   - component: {fileID: 33024138042606188}
   - component: {fileID: 23466987760073930}
-  - component: {fileID: 135205176496361256}
   m_Layer: 31
   m_Name: EnemyTracking
   m_TagString: Untagged
@@ -211,6 +210,8 @@ GameObject:
   - component: {fileID: 95803026525557974}
   - component: {fileID: 114656570329914004}
   - component: {fileID: 195135720471758414}
+  - component: {fileID: 65968771181774714}
+  - component: {fileID: 114871577710963420}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Untagged
@@ -358,7 +359,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518068718474426}
   m_LocalRotation: {x: -0, y: 0.9976596, z: -0, w: -0.06837585}
-  m_LocalPosition: {x: -26.303358, y: 41, z: 6.8918977}
+  m_LocalPosition: {x: 31.7, y: 48.8, z: 24}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 4969402046781934}
@@ -487,7 +488,7 @@ Transform:
   m_GameObject: {fileID: 1508218852132714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.042845365, y: 0.042845365, z: 0.042845365}
+  m_LocalScale: {x: 0.06293555, y: 0.06293555, z: 0.06293555}
   m_Children: []
   m_Father: {fileID: 4342112612573606}
   m_RootOrder: 1
@@ -773,6 +774,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &65968771181774714
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518068718474426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.05, z: 0.175}
+  m_Center: {x: 0, y: 0, z: -0.0175}
 --- !u!95 &95803026525557974
 Animator:
   serializedVersion: 3
@@ -811,18 +824,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   targetPoints: {fileID: 0}
---- !u!135 &135205176496361256
-SphereCollider:
+  decisionTime: 0
+--- !u!114 &114871577710963420
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508218852132714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1518068718474426}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40698f971e62b7e4ea1bada8cdef60da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137148966108559986
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

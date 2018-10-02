@@ -61,7 +61,7 @@ public class SharkScript : MonoBehaviour
         if (shark.GetState() == 0)
         {
             //passive
-            shark.Passive(player, gameObject, terrain);
+            shark.Passive(player, gameObject, terrain, 20);
             print("passive");
             anim.Play("Passive");
         }
@@ -81,14 +81,14 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 50f);
+            shark.Attack(player, gameObject, terrain, 3f);
             print("attacking");
-
+            anim.Play("Retreat");
+            //playerHealth.TakeDamage(25);
             if (shark.DistanceFromPlayer(player, gameObject) < 3)
             {
                 //Attack Anim
-                //anim.Play();              
-                //playerHealth.TakeDamage(25);
+
             }
         }
         else if (shark.GetState() == 3)
@@ -100,7 +100,7 @@ public class SharkScript : MonoBehaviour
             anim.Play("Retreat");           
         }
 
-        if (shark.DistanceFromPlayer(player, gameObject) < 20 && shark.GetState() == 0 && lastState != 1)
+        if (shark.DistanceFromPlayer(player, gameObject) < 30 && shark.GetState() == 0 && lastState != 1)
         {
             shark.SetState(1);
         }

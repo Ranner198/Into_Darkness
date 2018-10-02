@@ -53,7 +53,7 @@ public class EnemyClass
 
     public void GenerateAggro()
     {
-        this.aggro = Random.Range(0, 100);
+        this.aggro = Random.Range(50, 100);
     }
 
     public void SetAggro(int aggro)
@@ -119,7 +119,7 @@ public class EnemyClass
     //State Mechine change timer
     public void RandomTimer()
     {
-        this.timer = Random.Range(6, 25);
+        this.timer = Random.Range(0, 2);
     }
 
     //Get tha timer
@@ -167,12 +167,13 @@ public class EnemyClass
         return returnVal;
     }
 
-    public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain)
+    public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain, float speed)
     {
         //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
         Rigidbody rb;
         rb = shark.GetComponent<Rigidbody>();
-        rb.velocity = -1 * Vector3.forward * speed * Time.deltaTime * 10;
+        //rb.velocity = -1 * Vector3.forward * speed * Time.deltaTime * 10;
+        rb.AddRelativeForce(speed * Vector3.forward * speed * Time.deltaTime);
     }
 
     public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed)
@@ -186,12 +187,15 @@ public class EnemyClass
 
         rb.velocity = (-dir * speed * Time.deltaTime * 15);
 
-        Vector3 rot = (PlayerPos.transform.position - shark.transform.position).normalized;
+        //rotate us over time according to speed until we are in the required rotation
+        Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
 
-        Quaternion lookRotation = Quaternion.LookRotation(rot * Mathf.Rad2Deg);
+        Vector3 fixDir = GetDirection(HeadPos, shark);
+
+        Quaternion lookRot = Quaternion.LookRotation(-fixDir * Mathf.Rad2Deg);
 
         //rotate us over time according to speed until we are in the required rotation
-        shark.transform.rotation = Quaternion.Euler(-GetDirection(PlayerPos, shark));
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
     }
 
     public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed)
