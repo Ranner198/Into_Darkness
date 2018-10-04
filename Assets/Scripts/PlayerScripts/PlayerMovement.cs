@@ -18,7 +18,17 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * speed, -fallSpeed, Input.GetAxis("Vertical") * speed);
+        Vector3 movement;
+
+        string model = UnityEngine.XR.XRDevice.model != null ? UnityEngine.XR.XRDevice.model : "";
+        if (model.IndexOf("Rift") >= 0)
+        {
+            movement = new Vector3(Input.GetAxis("OcculusMoveX") * speed, -fallSpeed, Input.GetAxis("OcculusMoveY") * speed);
+        }
+        else
+        {
+            movement = new Vector3(Input.GetAxis("Horizontal") * speed, -fallSpeed, Input.GetAxis("Vertical") * speed);
+        }
 
         //Limit Speed
         movement.x = Mathf.Clamp(movement.x, -speed, speed);

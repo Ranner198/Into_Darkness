@@ -26,20 +26,41 @@ public class MouseLookScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        yaw += speedH * Input.GetAxis("Mouse X")* Time.deltaTime * 60;
-        pitch -= speedV * Input.GetAxis("Mouse Y")* Time.deltaTime * 60;
+        string model = UnityEngine.XR.XRDevice.model != null ? UnityEngine.XR.XRDevice.model : "";
+        if (model.IndexOf("Rift") >= 0)
+        {
 
-        var change = Quaternion.Euler(pitch, yaw, 0.0f);
+            yaw += speedH * Input.GetAxis("RightAnalogX") * Time.deltaTime * 25;
+            //pitch -= speedV * Input.GetAxis("RightAnalogY") * Time.deltaTime * 60;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, change, Time.deltaTime);
+            Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, transform.rotation, Time.deltaTime * helmentTurnSpeed);
+            Helmet.transform.position = transform.position;
 
-        Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
+            var change = Quaternion.Euler(pitch, yaw, 0.0f);
 
-        Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime * helmentTurnSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, change, Time.deltaTime);
 
-        Helmet.transform.position = transform.position;
-        //Helmet.transform.position = transform.TransformPoint(Vector3.back/6);
+            Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
 
-        timeCount += Time.deltaTime;
+            timeCount += Time.deltaTime;
+        }
+        else
+        {
+            yaw += speedH * Input.GetAxis("Mouse X") * Time.deltaTime * 60;
+            pitch -= speedV * Input.GetAxis("Mouse Y") * Time.deltaTime * 60;
+
+            var change = Quaternion.Euler(pitch, yaw, 0.0f);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, change, Time.deltaTime);
+
+            Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
+
+            Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime * helmentTurnSpeed);
+
+            Helmet.transform.position = transform.position;
+            //Helmet.transform.position = transform.TransformPoint(Vector3.back/6);
+
+            timeCount += Time.deltaTime;
+        }    
     }
 }
