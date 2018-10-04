@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -164,29 +164,33 @@ public class EnemyClass
         Debug.DrawRay(shark.transform.position, shark.transform.forward * 8, Color.red);
         //Add a Steer Controller
         RaycastHit hit;
-        Physics.Raycast(shark.transform.position, shark.transform.forward * 8, out hit);
-        if (hit.collider.tag == "Terrain")
-            steer = true;
+        bool hitStick = Physics.Raycast(shark.transform.position, shark.transform.forward, out hit, 8f);
 
+        if (hitStick)
+        {
+            if (hit.collider.tag == "Terrain")
+                steer = true;
+        }
         if (steer)
-            Steer(shark);
-
-        //Debug.Log(steer);
+            Steer(shark);      
     }
 
-    public void Steer(GameObject shark) {      
+    public void Steer(GameObject shark) {
         if (!setSteer)
-            setDegree = TurnDegree();
-
-        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
+        {
+            setSteer = true;
+            setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);
+            setDegree += TurnDegree();
+        }
+        shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
 
         if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
             steer = false;
     }
 
     public int TurnDegree() {
-        setSteer = true;
-        int degree = Random.Range(150, 180);
+        int degree = Random.Range(130, 230);
+        Debug.Log("Times Called");
         return degree;
     }
 
@@ -204,10 +208,11 @@ public class EnemyClass
         //rotate us over time according to speed until we are in the required rotation
         Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
 
-        Quaternion lookRot = shark.transform.GetQuaternionDirection(PlayerPos);
-
+        //Quaternion lookRot = shark.transform.GetQuaternionDirection(PlayerPos);
+        //Quaternion rot180degrees = Quaternion.Euler(-lookRot.eulerAngles);
         //rotate us over time according to speed until we are in the required rotation
-        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
+        //shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, rot180degrees, Time.deltaTime * 3);
+        //shark.transform.LookAt(-PlayerPos.transform.position);
     }
 
     public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed)
