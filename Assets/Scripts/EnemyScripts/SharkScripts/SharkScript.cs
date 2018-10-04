@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -59,7 +59,7 @@ public class SharkScript : MonoBehaviour
         {
             //passive
             shark.Passive(player, gameObject, terrain, 20);
-            if(debugMode)
+            if (debugMode)
                 print("passive");
             anim.Play("Passive");
         }
@@ -80,20 +80,10 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 5f);
+            shark.Attack(player, gameObject, terrain, 3f);
             if (debugMode)
                 print("attacking");
             //playerHealth.TakeDamage(25);
-            if (transform.GetDistance(player) < 17)
-            {
-                //Attack Anim
-                anim.Play("Attack");
-            }
-
-            if (transform.GetDistance(player) < 7)
-            {
-                shark.SetState(3);
-            }
         }
         else if (shark.GetState() == 3)
         {
@@ -102,7 +92,7 @@ public class SharkScript : MonoBehaviour
                 print("scared");
             shark.Retreat(player, gameObject, terrain, 6f);
             //Retreat
-            anim.Play("Retreat");           
+            anim.Play("Retreat");
         }
 
         if (transform.GetDistance(player) < 30 && shark.GetState() == 0 && lastState != 1)
@@ -110,10 +100,13 @@ public class SharkScript : MonoBehaviour
             shark.SetState(1);
             //audioSource.PlayOneShot(Sound[1]);
         }
-        if (transform.GetDistance(player) > 45 && shark.GetState() == 2)
+
+        if (transform.GetDistance(player) < 13 && shark.GetState() == 2)
         {
-            shark.SetState(0);
+            anim.Play("Attack");
+            StartCoroutine(BiteAndRun());
         }
+
         //Count Down
         if (shark.GetTimer() >= 0)
             shark.CountDown();
@@ -136,7 +129,13 @@ public class SharkScript : MonoBehaviour
             else if (aggro <= 25)
             {
                 shark.SetState(3);
-            }           
+            }
         }
+    }
+
+    IEnumerator BiteAndRun() {     
+        yield return new WaitForSeconds(2f);
+        shark.SetState(3);
+        print(shark.GetState());
     }
 }

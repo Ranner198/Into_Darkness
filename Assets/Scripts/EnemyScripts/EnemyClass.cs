@@ -203,16 +203,15 @@ public class EnemyClass
 
         rb = shark.GetComponent<Rigidbody>();
 
-        rb.velocity = (-dir * speed * Time.deltaTime * 15);
+        rb.AddForce(-dir * speed * Time.deltaTime * 90);
 
         //rotate us over time according to speed until we are in the required rotation
         Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
 
-        //Quaternion lookRot = shark.transform.GetQuaternionDirection(PlayerPos);
-        //Quaternion rot180degrees = Quaternion.Euler(-lookRot.eulerAngles);
-        //rotate us over time according to speed until we are in the required rotation
-        //shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, rot180degrees, Time.deltaTime * 3);
-        //shark.transform.LookAt(-PlayerPos.transform.position);
+        Vector3 inverse = -dir;
+
+        Quaternion lookRot = Quaternion.LookRotation(inverse * Mathf.Rad2Deg);
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime);
     }
 
     public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed)
@@ -252,6 +251,11 @@ public class EnemyClass
         else
         {
             rb.velocity = (dir * speed * Time.deltaTime * attackSpeed * 15);
+        }
+
+        if (shark.transform.GetDistance(PlayerPos) < 3)
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 
