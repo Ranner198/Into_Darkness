@@ -7,28 +7,43 @@ using UnityEngine;
 public class HideTrackerInEditor : MonoBehaviour
 {
 
-    private bool isPlaying;
+    private bool isPlaying, holder, show_Objects;
     private Renderer renderer;
 
     public GameObject[] targets;
 
+    void Awake()
+    {
+        print("running");
+        isPlaying = EditorApplication.isPlaying;
+
+        if (isPlaying)
+        {
+            if (show_Objects)
+                holder = true;
+            UpdateInput(true);
+        }
+
+        if (!isPlaying) {
+            if (show_Objects != holder)
+                show_Objects = !show_Objects;
+        }
+    }
 
     public void UpdateInput(bool show)
     {
-
+        show_Objects = show;
         UpdateTargetObjects();
 
-        isPlaying = EditorApplication.isPlaying;
-
         //Game Is Playing 
-        if (isPlaying || show)
-        {
-            HideObjects();
-        }
-
-        if (!isPlaying && !show)
+        if (!show)
         {
             ShowObjects();
+        }
+
+        if (show)
+        {
+            HideObjects();
         }
     }
 
