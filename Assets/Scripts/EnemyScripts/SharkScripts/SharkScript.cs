@@ -33,7 +33,6 @@ public class SharkScript : MonoBehaviour
 
         shark.SetState(0);
         shark.GenerateAggro();
-        print(shark.GetAggro());
 
         anim = GetComponent<Animator>();
 
@@ -55,8 +54,6 @@ public class SharkScript : MonoBehaviour
     void Update()
     {
         transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
-        print(shark.GetTimer());
-        //print(shark.GetTimer());
 
         if (shark.GetState() == 0)
         {
