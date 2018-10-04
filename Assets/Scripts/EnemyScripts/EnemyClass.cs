@@ -202,9 +202,7 @@ public class EnemyClass
         //rotate us over time according to speed until we are in the required rotation
         Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
 
-        Vector3 fixDir = shark.transform.GetDirection(PlayerPos);
-
-        Quaternion lookRot = Quaternion.LookRotation(fixDir * Mathf.Rad2Deg);
+        Quaternion lookRot = Quaternion.LookRotation(dir * Mathf.Rad2Deg);
 
         //rotate us over time according to speed until we are in the required rotation
         shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
