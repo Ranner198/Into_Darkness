@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyClass
 {
 
-    private int health, damage, stateSystem, nextPos = 0, aggro;
+    private int health, damage, stateSystem, nextPos = 0, aggro, setDegree = 0;
     private float speed, timer;
-    private bool dead, CircleMode = false, AttackDir = false;
+    private bool dead, CircleMode = false, AttackDir = false, setSteer = false, steer = false;
     public string currentState;
 
     //Attack Point
@@ -160,6 +160,34 @@ public class EnemyClass
         rb = shark.GetComponent<Rigidbody>();
         //rb.velocity = -1 * Vector3.forward * speed * Time.deltaTime * 10;
         rb.AddRelativeForce(speed * Vector3.forward * speed * Time.deltaTime);
+
+        Debug.DrawRay(shark.transform.position, shark.transform.forward * 8, Color.red);
+        //Add a Steer Controller
+        RaycastHit hit;
+        Physics.Raycast(shark.transform.position, shark.transform.forward * 8, out hit);
+        if (hit.collider.tag == "Terrain")
+            steer = true;
+
+        if (steer)
+            Steer(shark);
+
+        //Debug.Log(steer);
+    }
+
+    public void Steer(GameObject shark) {      
+        if (!setSteer)
+            setDegree = TurnDegree();
+
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
+
+        if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
+            steer = false;
+    }
+
+    public int TurnDegree() {
+        setSteer = true;
+        int degree = Random.Range(150, 180);
+        return degree;
     }
 
     public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed)

@@ -14,7 +14,6 @@ public class HideTrackerInEditor : MonoBehaviour
 
     void Awake()
     {
-        print("running");
         isPlaying = EditorApplication.isPlaying;
 
         if (isPlaying)
