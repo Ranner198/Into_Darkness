@@ -80,15 +80,19 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 3f);
+            shark.Attack(player, gameObject, terrain, 5f);
             if (debugMode)
                 print("attacking");
-            anim.Play("Attack");
             //playerHealth.TakeDamage(25);
-            if (transform.GetDistance(player) < 3)
+            if (transform.GetDistance(player) < 17)
             {
                 //Attack Anim
+                anim.Play("Attack");
+            }
 
+            if (transform.GetDistance(player) < 7)
+            {
+                shark.SetState(3);
             }
         }
         else if (shark.GetState() == 3)
@@ -105,8 +109,11 @@ public class SharkScript : MonoBehaviour
         {
             shark.SetState(1);
             //audioSource.PlayOneShot(Sound[1]);
-        }      
-        
+        }
+        if (transform.GetDistance(player) > 45 && shark.GetState() == 2)
+        {
+            shark.SetState(0);
+        }
         //Count Down
         if (shark.GetTimer() >= 0)
             shark.CountDown();
