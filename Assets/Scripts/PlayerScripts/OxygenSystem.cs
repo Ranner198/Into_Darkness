@@ -13,7 +13,6 @@ public class OxygenSystem : MonoBehaviour {
     AudioSource playerAudio;
     PlayerMovement playerMovement;
     PlayerClass player = new PlayerClass(1.0f, 100, 3);
-    bool dead;
 
     void Awake()
     {
@@ -34,9 +33,7 @@ public class OxygenSystem : MonoBehaviour {
         
         //playerAudio.Play();
 
-        dead = player.isDead();
-
-        if (dead)
+        if (startingOxygen <= 0)
         {
             Death();
         }
@@ -44,7 +41,6 @@ public class OxygenSystem : MonoBehaviour {
 
     void Death()
     {
-        dead = true;
 
         //playerAudio.clip = deathClip;
         //playerAudio.Play();
