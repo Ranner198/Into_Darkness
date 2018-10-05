@@ -190,7 +190,6 @@ public class EnemyClass
 
     public int TurnDegree() {
         int degree = Random.Range(130, 230);
-        Debug.Log("Times Called");
         return degree;
     }
 
@@ -203,7 +202,7 @@ public class EnemyClass
 
         rb = shark.GetComponent<Rigidbody>();
 
-        rb.AddForce(-dir * speed * Time.deltaTime * 90);
+        rb.AddForce(-dir * speed * Time.deltaTime * 300);
 
         //rotate us over time according to speed until we are in the required rotation
         Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
