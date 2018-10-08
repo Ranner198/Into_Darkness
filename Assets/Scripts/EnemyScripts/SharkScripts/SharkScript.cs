@@ -54,7 +54,6 @@ public class SharkScript : MonoBehaviour
     void Update()
     {
         transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
-        print(decisionTime);
         if (shark.GetState() == 0)
         {
             //passive
