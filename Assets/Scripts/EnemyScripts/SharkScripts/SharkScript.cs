@@ -54,7 +54,7 @@ public class SharkScript : MonoBehaviour
     void Update()
     {
         transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
-
+        print(decisionTime);
         if (shark.GetState() == 0)
         {
             //passive
@@ -95,10 +95,10 @@ public class SharkScript : MonoBehaviour
             anim.Play("Retreat");
         }
 
-        if (transform.GetDistance(player) < 30 && shark.GetState() == 0 && lastState != 1)
+        if (transform.GetDistance(player) < 30 && shark.GetState() == 0)
         {
-            shark.SetState(1);
-            //audioSource.PlayOneShot(Sound[1]);
+            //Start The Circle State
+            shark.SetState(2);
         }
 
         if (transform.GetDistance(player) < 13 && shark.GetState() == 2)
@@ -133,9 +133,18 @@ public class SharkScript : MonoBehaviour
         }
     }
 
-    IEnumerator BiteAndRun() {     
+    IEnumerator BiteAndRun() { 
         yield return new WaitForSeconds(2f);
+        decisionTime = false;
         shark.SetState(3);
-        print(shark.GetState());
+        yield return new WaitForSeconds(8f);
+        shark.SetState(0);
+    }
+
+    public IEnumerator Hit() {
+        shark.SetState(3);
+        yield return new WaitForSeconds(8f);
+        decisionTime = false;
+        shark.SetState(0);
     }
 }

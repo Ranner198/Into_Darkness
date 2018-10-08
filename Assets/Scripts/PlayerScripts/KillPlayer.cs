@@ -14,7 +14,7 @@ public class KillPlayer : MonoBehaviour {
     void Start()
     {
         pm = Player.GetComponent<PlayerMovement>();
-        main = Player.transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+        main = Player.transform.GetChild(0).GetComponent<Camera>();
         mls = main.GetComponent<MouseLookScript>();
     }
 

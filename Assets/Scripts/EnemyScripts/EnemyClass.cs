@@ -193,6 +193,7 @@ public class EnemyClass
         return degree;
     }
 
+    //Retreat State Mode
     public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed)
     {
 
@@ -213,22 +214,23 @@ public class EnemyClass
         shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime);
     }
 
+    //Attack State
     public void Attack(GameObject PlayerPos, GameObject shark, Terrain terrain, float attackSpeed)
     {
-
+        //Get the attack direction
         if (!AttackDir)
         {
             dir = shark.transform.GetDirection(PlayerPos);
             AttackDir = true;
         }
-
+       
         Rigidbody rb;
+        rb = shark.GetComponent<Rigidbody>(); //Get Rigidbody ref
 
-        rb = shark.GetComponent<Rigidbody>();
+        float Distance = shark.transform.GetDistance(PlayerPos); //Find the distance from the player
 
-        float Distance = shark.transform.GetDistance(PlayerPos);
-
-        float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
+        //--Retired --
+        //float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
 
         //rotate us over time according to speed until we are in the required rotation
         Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
@@ -238,6 +240,9 @@ public class EnemyClass
         //rotate us over time according to speed until we are in the required rotation
         shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
 
+        rb.velocity = (dir * speed * Time.deltaTime * attackSpeed * 15);
+
+        /* -- Retired --
         if (Distance < 2.5)
         {
             dir *= -1;
@@ -249,13 +254,14 @@ public class EnemyClass
         }
         else
         {
-            rb.velocity = (dir * speed * Time.deltaTime * attackSpeed * 15);
+            
         }
-
+        //Stop when reach player
         if (shark.transform.GetDistance(PlayerPos) < 3)
         {
             rb.velocity = Vector3.zero;
         }
+        */
     }
 
     public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, Terrain terrain, float rotateSpeed)

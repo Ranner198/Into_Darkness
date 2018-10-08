@@ -585,9 +585,9 @@ GameObject:
   - component: {fileID: 114994575802004932}
   - component: {fileID: 82973585836460490}
   - component: {fileID: 114981947044605760}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SharkPrefab
-  m_TagString: Untagged
+  m_TagString: Shark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1541,15 +1541,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707433362670826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.99999124, z: -0, w: 0.0041929907}
+  m_LocalPosition: {x: 28.72, y: 26.11, z: 18.28}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 4055458726448952}
   - {fileID: 4211376420966970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.52, z: 0}
 --- !u!4 &4849765435566656
 Transform:
   m_ObjectHideFlags: 1
@@ -3561,6 +3561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40698f971e62b7e4ea1bada8cdef60da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugMode: 0
 --- !u!137 &137157480169165082
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

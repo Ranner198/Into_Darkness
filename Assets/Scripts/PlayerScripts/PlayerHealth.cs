@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     bool dead;
     bool damaged;
 
+    public bool debugMode = false;
 
     void Awake()
     {
@@ -88,14 +89,14 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.tag == "Shark")
         {
             TakeDamage(5);
-            print("damage dealt");
+            if (debugMode) print("damage dealt");
         }
 
     }
 
     void OnTriggerExit(Collider other)
     {
-        print("exit trigger with _player");
+        if (debugMode) print("exit trigger with _player");
     }
 
 
