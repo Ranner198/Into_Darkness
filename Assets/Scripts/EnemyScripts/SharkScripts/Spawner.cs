@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour {
 
             float distance = transform.GetDistance(player);
 
-            while (sampleHeight < minHeight && sampleHeight > maxHeight && distance < 60) //if the terrain doesn't fit the desiered height resample
+            while (sampleHeight < minHeight && sampleHeight > maxHeight && distance < 75) //if the terrain doesn't fit the desiered height resample or if too close to player
             {
                 randomPos = new Vector3(Random.Range(-sizeX, sizeX), 0, Random.Range(-sizeY, sizeY));
                 sampleHeight = terrain.SampleHeight(randomPos);

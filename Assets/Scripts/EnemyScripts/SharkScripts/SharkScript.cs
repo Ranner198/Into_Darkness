@@ -26,6 +26,8 @@ public class SharkScript : MonoBehaviour
     public bool decisionTime = false;
     public bool debugMode = false;
 
+    private Rigidbody rb;
+
     void Start()
     {
         CircleArea = new GameObject[4];
@@ -49,11 +51,13 @@ public class SharkScript : MonoBehaviour
 
         if (terrain == null)
             terrain = FindObjectOfType<Terrain>();
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
-    {
-        transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
+    { 
+        //transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
         if (shark.GetState() == 0)
         {
             //passive

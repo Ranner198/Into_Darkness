@@ -8,11 +8,15 @@ public class SpearLogic : MonoBehaviour {
     private float despawnTimer = 11;
     private bool stuck = false;
 
+    private ParticleSystem PS;
     private GameObject[] shark;
     private SharkScript _SharkScript;
+    private GameObject bleedPosition;
 
     void Start () {
         rb = GetComponent<Rigidbody>();
+        PS = transform.parent.GetChild(0).GetComponent<ParticleSystem>();
+        bleedPosition = transform.GetChild(2).gameObject;
     }
 
     void Update()
@@ -37,6 +41,9 @@ public class SpearLogic : MonoBehaviour {
         }
         if (coll.tag == "Shark")
         {
+            transform.parent.SetParent(coll.transform);
+            print("Hit a Shark, Name: " + coll.gameObject.name);
+            
             shark = GameObject.FindGameObjectsWithTag("Shark");
             for (int i = 0; i < shark.Length; i++)
             {
@@ -47,9 +54,11 @@ public class SpearLogic : MonoBehaviour {
                 }
             }
             rb.isKinematic = true;
-            transform.SetParent(coll.transform);
             stuck = true;
-            //Destroy(this);
+            ParticleSystem Bleeding = Instantiate(PS, transform.position, Quaternion.Inverse(transform.rotation));
+            PS.Play();
+            PS.transform.position = bleedPosition.transform.position;
+            Destroy(this);
         }
     }
 }

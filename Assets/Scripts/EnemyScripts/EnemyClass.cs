@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyClass
 {
 
-    private int health, damage, stateSystem, nextPos = 0, aggro, setDegree = 0;
+    private int health, damage, stateSystem, nextPos = 0, aggro, setDegree = 0, stillHitting = 0;
     private float speed, timer;
     private bool dead, CircleMode = false, AttackDir = false, setSteer = false, steer = false;
     public string currentState;
@@ -137,7 +137,7 @@ public class EnemyClass
     {
         this.timer -= Time.deltaTime;
     }
-
+    /* //Retired
     public Vector3 StayOnTopOfTerrain(Terrain terrain, GameObject shark) {
 
         Vector3 sharkPos = shark.transform.position;
@@ -152,7 +152,7 @@ public class EnemyClass
 
         return returnVal;
     }
-
+    */
     public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain, float speed)
     {
         //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
@@ -171,12 +171,18 @@ public class EnemyClass
             if (hit.collider.tag == "Terrain")
                 steer = true;
         }
+        else
+        {
+            stillHitting = 0;
+        }
+
         if (steer)
             Steer(shark);      
     }
 
     public void Steer(GameObject shark) {
-        if (!setSteer)
+        stillHitting++;
+        if (!setSteer || stillHitting % 300 == 0)
         {
             setSteer = true;
             setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);

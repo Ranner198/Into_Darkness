@@ -31,7 +31,7 @@ public class SpearGun : MonoBehaviour {
         {
             GameObject Spear = Instantiate(spear, spawnPoint.transform.position, helment.transform.rotation);
             Spear.name = "Spear";
-            rb = Spear.transform.GetChild(0).GetComponent<Rigidbody>();
+            rb = Spear.transform.GetChild(1).GetComponent<Rigidbody>();
             rb.AddRelativeForce(1000 * Time.deltaTime * 60 * Vector3.up);
             //Destroy(clone, 3.0f);           
             ammo--;

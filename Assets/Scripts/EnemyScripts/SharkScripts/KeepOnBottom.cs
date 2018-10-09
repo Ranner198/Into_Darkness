@@ -12,7 +12,11 @@ public class KeepOnBottom : MonoBehaviour {
 	
 
 	void Update () {
-        float height = terrain.SampleHeight(transform.position);
+        float height = 25; //terrain.SampleHeight(transform.position);
+        /*
+         if (height < 25)
+            height = 25;
+        */
         height++;
         float min = height - 2;
         float max = height + 2;
