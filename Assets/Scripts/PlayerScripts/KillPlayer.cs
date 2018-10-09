@@ -14,9 +14,27 @@ public class KillPlayer : MonoBehaviour {
 
     void Start()
     {
+<<<<<<< HEAD
         playerMovement = Player.GetComponent<PlayerMovement>();
         mainCam = Player.transform.GetChild(0).GetChild(0).GetComponent<Camera>();
         mouseLook = mainCam.GetComponent<MouseLookScript>();
+=======
+        pm = Player.GetComponent<PlayerMovement>();
+        main = Player.transform.GetChild(0).GetComponent<Camera>();
+        mls = main.GetComponent<MouseLookScript>();
+    }
+
+    void Update()
+    {
+        if (lost) {
+            Player.GetComponent<Collider>().enabled = false;
+
+            //pm.enabled = false;
+            mls.enabled = false;
+
+            Player.transform.Translate(Vector3.down * 50);
+        }    
+>>>>>>> origin/ranner
     }
 
     void OnTriggerEnter(Collider coll)
