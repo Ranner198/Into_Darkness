@@ -21,7 +21,6 @@ public class SpawnLocations : MonoBehaviour {
             {
                 int RandomSpawn = (Random.Range(0, prefab.Length));
                 //Instaitate here
-                print("Spawn");
             }
         }
     }

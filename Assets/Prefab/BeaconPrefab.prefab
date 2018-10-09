@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subName: Sub
-  playerName: player
+  playerName: Player
   terrain: {fileID: 0}
