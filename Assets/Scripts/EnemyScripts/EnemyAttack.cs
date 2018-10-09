@@ -8,6 +8,8 @@ public class EnemyAttack : MonoBehaviour {
     private GameObject player;
     private bool collidedWithPlayer;
 
+    public bool DebugMode = false;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -17,7 +19,7 @@ public class EnemyAttack : MonoBehaviour {
     void Update()
     {
         Attack();
-    }
+    }   
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,7 +27,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             animator.SetBool("IsNearPlayer", true);
         }
-        print("enter trigger with _player");
+        if (DebugMode) print("enter trigger with _player");
     }
 
     void OnCollisionEnter(Collision other)
@@ -34,7 +36,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             collidedWithPlayer = true;
         }
-        print("enter collided with _player");
+        if (DebugMode) print("enter collided with _player");
     }
 
     void OnCollisionExit(Collision other)
@@ -43,7 +45,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             collidedWithPlayer = false;
         }
-        print("exit collided with _player");
+        if (DebugMode) print("exit collided with _player");
     }
 
     void OnTriggerExit(Collider other)
@@ -52,14 +54,14 @@ public class EnemyAttack : MonoBehaviour {
         {
             animator.SetBool("IsNearPlayer", false);
         }
-        print("exit trigger with _player");
+        if (DebugMode) print("exit trigger with _player");
     }
 
     void Attack()
     {
         if (collidedWithPlayer)
         {
-            print("player has been hit");
+            if (DebugMode) print("player has been hit");
         }
     }
 }
