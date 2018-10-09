@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeight: 30
   minHeight: 20
-  spawnNum: 8
+  spawnNum: 20
   shark: {fileID: 1707433362670826, guid: 406bd1e3ba2fc15488c8cb55c048004a, type: 2}
   player: {fileID: 464541276}
   terrain: {fileID: 1180252740}
