@@ -9,17 +9,26 @@ public class CameraEditor : MonoBehaviour {
     private Light dirLight;
 
     private bool isPlaying;
-     
-    void Awake () {
-        
+    public bool toggleScript;
+    
+
+    void Start () {
         if (dirLight == null)
             dirLight = GetComponent<Light>();
 
         isPlaying = EditorApplication.isPlaying;
 
-        if (!isPlaying)
-            dirLight.enabled = true;
-        else
-            dirLight.enabled = false;
+        if (toggleScript)
+        {
+            if (!isPlaying)
+                dirLight.enabled = true;
+            else
+                dirLight.enabled = false;
+        }
 	}
+
+    public void UpdateToggle(bool toggle) {
+        print("This script is: " + toggle);
+        this.toggleScript = toggle;
+    }
 }

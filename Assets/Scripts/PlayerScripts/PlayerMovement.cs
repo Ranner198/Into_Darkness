@@ -38,6 +38,6 @@ public class PlayerMovement : MonoBehaviour {
         movement = transform.TransformDirection(movement);
         cc.Move(movement);
         if (Input.GetKey(KeyCode.Q))
-            cs.shakecamera();
+            cs.shakecamera(5, 1);
     }
 }

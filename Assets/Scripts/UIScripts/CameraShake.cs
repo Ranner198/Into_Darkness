@@ -50,8 +50,10 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    public void shakecamera()
+    public void shakecamera(float _shakeDuration, float _shakeAmount)
     {
         shake = true;
+        shakeDuration = _shakeDuration;
+        shakeAmount = _shakeAmount;
     }
 }

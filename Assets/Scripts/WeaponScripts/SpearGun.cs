@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class SpearGun : MonoBehaviour {
 
-    public float damage = 10f;
-    public float range = 100f;
     public int ammo = 5;
     public Text ammoText;
     public GameObject spear;
     public GameObject spawnPoint;
-    public Camera fpsCam;
-	
+    private Rigidbody rb;
+    public GameObject helment;
+    //Add a reload function with animation and a timer into it
+
 	// Update is called once per frame
 	void Update () {
 
@@ -20,24 +20,21 @@ public class SpearGun : MonoBehaviour {
         {
             Shoot();
         }
-
-	}
+        if (Input.GetKeyDown(KeyCode.R))
+            ammo = 5;
+    }
 
     void Shoot()
     {
-        /*
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-        {
-            Debug.Log(hit.transform.name);
-        }
-        */
-
         //check to make sure there is enough ammo
         if (ammo > 0)
         {
-            Object clone = Instantiate(spear, spawnPoint.transform.position, fpsCam.transform.rotation);
-            Destroy(clone, 3.0f);
+            GameObject Spear = Instantiate(spear, spawnPoint.transform.position, helment.transform.rotation);
+            Spear.name = "Spear";
+            rb = Spear.transform.GetChild(1).GetComponent<Rigidbody>();
+            rb.AddRelativeForce(1000 * Time.deltaTime * 60 * Vector3.up);
+            //Destroy(clone, 3.0f);           
+            ammo--;
         }
 
     }
