@@ -29,7 +29,7 @@ public class SeaMonsterScript : MonoBehaviour {
         if (monster.GetState() == 0)
         {
             //passive
-            monster.Passive(player, gameObject, terrain, 55);
+            monster.PassiveFix(player, gameObject, terrain, 55);
             if (debugMode)
                 print("Passive");
             anim.SetFloat("Direction", -1);
