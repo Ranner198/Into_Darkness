@@ -37,7 +37,5 @@ public class PlayerMovement : MonoBehaviour {
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         cc.Move(movement);
-        if (Input.GetKey(KeyCode.Q))
-            cs.shakecamera(5, 1);
     }
 }
