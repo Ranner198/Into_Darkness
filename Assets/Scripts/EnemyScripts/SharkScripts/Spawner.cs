@@ -20,18 +20,12 @@ public class Spawner : MonoBehaviour {
         if (i < spawnNum) //loop through n number of times until finished
         {
             //Generate a random height
-            Vector3 randomPos = new Vector3(Random.Range(-sizeX, sizeX), 45.6f, Random.Range(-sizeY, sizeY));
+            Vector3 randomPos = new Vector3(Random.Range(-sizeX, sizeX), 0, Random.Range(-sizeY, sizeY));
             float sampleHeight = terrain.SampleHeight(randomPos); //get the terrain height
 
-            float distance = transform.GetDistance(player);
+            float distance = Vector3.Distance(randomPos, player.transform.position);
 
-            while (sampleHeight < minHeight && sampleHeight > maxHeight && distance < 75) //if the terrain doesn't fit the desiered height resample or if too close to player
-            {
-                randomPos = new Vector3(Random.Range(-sizeX, sizeX), 0, Random.Range(-sizeY, sizeY));
-                sampleHeight = terrain.SampleHeight(randomPos);
-            }
-
-            if (sampleHeight > minHeight && sampleHeight < maxHeight)
+            if (distance > 75 && sampleHeight < maxHeight && sampleHeight > minHeight)
             {
                 spawnPos = new Vector3(randomPos.x, sampleHeight, randomPos.z);
                 Quaternion randomRot = Quaternion.Euler(0, Random.Range(0, 360), 0);
