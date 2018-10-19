@@ -322,6 +322,52 @@ Transform:
   m_Father: {fileID: 605744693}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &241561133
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 116.5495
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.131058
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!4 &253317311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400020, guid: 7ca286ae696d959499b2091e1db650ad,
@@ -1185,6 +1231,52 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &682904009
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -169.37828
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001524
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -164.62584
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &686037318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790396441
 GameObject:
@@ -1364,7 +1456,7 @@ RectTransform:
   - {fileID: 1572664903}
   - {fileID: 497700078}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1382,6 +1474,98 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!1001 &805690752
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -83.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!1001 &823086652
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 154.96564
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -138.01706
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &859199579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1656,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 859199579}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &879337307
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 152.15161
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 233.5224
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &938628957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,6 +1771,144 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 938628957}
   m_CullTransparentMesh: 0
+--- !u!1001 &989147208
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.785156
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 95.983765
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1013229779
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -158.41943
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001524
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 264.55893
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1015796839
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.308029
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 205.16861
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &1037524132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +2008,52 @@ Transform:
   m_Father: {fileID: 605744693}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1150249795
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -170.84471
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.379944
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &1170458969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +2199,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1190577917
 GameObject:
@@ -1850,7 +2264,7 @@ Transform:
   - {fileID: 605744693}
   - {fileID: 1563975668}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1208895674
 MonoBehaviour:
@@ -1899,6 +2313,52 @@ MonoBehaviour:
   targets:
   - {fileID: 0}
   - {fileID: 859199579}
+--- !u!1001 &1258198045
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -152.25748
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -41.677887
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &1290071910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,7 +2459,7 @@ Transform:
   m_LocalScale: {x: 500, y: 74.83634, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1303238992
 GameObject:
@@ -2345,6 +2805,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1438381586}
   m_CullTransparentMesh: 0
+--- !u!1001 &1475380991
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -85.687454
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -102.66568
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &1495996308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,8 +3409,54 @@ Transform:
   - {fileID: 1572701974}
   - {fileID: 464541286}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1736253527
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 97.54346
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 251.54202
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &1753030652
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,7 +3598,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1849443204
 GameObject:
@@ -7827,7 +8375,7 @@ Transform:
   m_LocalScale: {x: 0.49866, y: 0.49866, z: 0.49866}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915799030
 MonoBehaviour:
@@ -7840,6 +8388,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d9712997ec8274bafeb56e12ba1a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1938101530
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -161.66739
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001528
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -123.9234
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1955503153
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 145.32883
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.440628
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+      propertyPath: m_Name
+      value: Thermal Vent (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6927c987bc01a743975be9055cdca09, type: 3}
+  m_IsPrefabAsset: 0
 --- !u!1 &2001366040
 GameObject:
   m_ObjectHideFlags: 0
