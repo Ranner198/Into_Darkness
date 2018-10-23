@@ -83,7 +83,7 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 3f);
+            shark.Attack(player, gameObject, terrain, 6f);
             if (debugMode)
                 print("attacking");
             //playerHealth.TakeDamage(25);
@@ -93,7 +93,7 @@ public class SharkScript : MonoBehaviour
             //scared
             if (debugMode)
                 print("scared");
-            shark.Retreat(player, gameObject, terrain, 6f);
+            shark.Retreat(player, gameObject, terrain, 8f);
             //Retreat
             anim.Play("Retreat");
         }
@@ -104,7 +104,7 @@ public class SharkScript : MonoBehaviour
             shark.SetState(2);
         }
 
-        if (transform.GetDistance(player) < 13 && shark.GetState() == 2)
+        if (transform.GetDistance(player) < 25 && shark.GetState() == 2)
         {
             anim.Play("Attack");
             StartCoroutine(BiteAndRun());
@@ -142,8 +142,11 @@ public class SharkScript : MonoBehaviour
         }
     }
 
-    IEnumerator BiteAndRun() { 
-        yield return new WaitForSeconds(2f);
+    IEnumerator BiteAndRun() {
+        yield return new WaitForSeconds(1.15f);
+        shark.SetState(5);
+        anim.Play("Retreat");
+        yield return new WaitForSeconds(.5f);
         decisionTime = false;
         shark.SetState(3);
         yield return new WaitForSeconds(8f);

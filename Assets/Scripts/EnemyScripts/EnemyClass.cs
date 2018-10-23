@@ -235,7 +235,7 @@ public class EnemyClass
 
         rb = shark.GetComponent<Rigidbody>();
 
-        rb.AddForce(-dir * speed * Time.deltaTime * 300);
+        rb.AddForce(-dir * speed * Time.deltaTime * 1200);
 
         //rotate us over time according to speed until we are in the required rotation
         Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
@@ -243,7 +243,7 @@ public class EnemyClass
         Vector3 inverse = -dir;
 
         Quaternion lookRot = Quaternion.LookRotation(inverse * Mathf.Rad2Deg);
-        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime);
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
     }
 
     //Attack State

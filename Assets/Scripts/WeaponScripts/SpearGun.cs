@@ -8,28 +8,46 @@ public class SpearGun : MonoBehaviour {
     public static bool shootState = false;
 
     public int ammo = 5;
-    public Text ammoText;
     public GameObject spear;
+    public Text ammoText;
+    public GameObject prefabObject;
     public GameObject spawnPoint;
     private Rigidbody rb;
     public GameObject helment;
     private bool isReloading = false;
 
-	void Update () {
+    private Animator anim;
+    private GameObject Spear;
+    private bool shot = false;
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    void Update () {
 
         DisplayAmmo();
 
-        if (Input.GetButtonDown("Fire2"))
+        if (!CheckAirGaugeAnimationController.checkAirGuage)
         {
-            shootState = !shootState;
-            print(shootState);
+            if (Input.GetButtonDown("Fire2"))
+            {
+                shootState = !shootState;
+            }
         }
 
         if (shootState)
         {
+            if (ammo > 0 && !shot)
+            {
+                //GameObject prefab = Instantiate(prefabObject, spawnPoint.transform.position, spawnPoint.transform.rotation);
+                //prefab.transform.parent = spawnPoint.transform;
+                shot = true;
+            }
+            anim.Play("Shoot");
             if (Input.GetButtonDown("Fire1") && ammo > 0)
             {
-                Shoot();
+                Shoot();            
             }
             else if (ammo <= 0 && !isReloading)
             {
@@ -40,11 +58,14 @@ public class SpearGun : MonoBehaviour {
                 //Add Dry Fire Sound
             }
         }
+        else
+            anim.Play("Shootn't");
     }
 
     void Shoot()
     {
-        GameObject Spear = Instantiate(spear, spawnPoint.transform.position, helment.transform.rotation);
+        //Parent and hold in place until it is fired
+        Spear = Instantiate(spear, spawnPoint.transform.position, helment.transform.rotation);
         Spear.name = "Spear";
         rb = Spear.transform.GetChild(1).GetComponent<Rigidbody>();
         rb.AddRelativeForce(1000 * Time.deltaTime * 60 * Vector3.up);
@@ -64,6 +85,7 @@ public class SpearGun : MonoBehaviour {
         //Start Reload Animation
         yield return new WaitForSeconds(Random.Range(5, 10));
         ammo = 1;
+        shot = false;
         print("reloaded!");
         isReloading = false;
     }
