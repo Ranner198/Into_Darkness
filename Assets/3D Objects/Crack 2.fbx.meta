@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: pCylinder1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Faceplate_Texture
+    second: {fileID: 2100000, guid: 718c64c20e476a44c9c054a577b40437, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

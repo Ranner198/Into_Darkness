@@ -134,6 +134,12 @@ public class SharkScript : MonoBehaviour
                 shark.SetState(3);
             }
         }
+
+        //if shark leaves bounds Delete it...
+        if (Mathf.Abs(transform.position.x) > 200 || Mathf.Abs(transform.position.z) > 200)
+        {
+            DestroyImmediate(gameObject);
+        }
     }
 
     IEnumerator BiteAndRun() { 

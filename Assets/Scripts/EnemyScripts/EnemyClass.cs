@@ -179,6 +179,32 @@ public class EnemyClass
         if (steer)
             Steer(shark);      
     }
+    public void PassiveFix(GameObject PlayerPos, GameObject shark, Terrain terrain, float speed)
+    {
+        //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
+        Rigidbody rb;
+        rb = shark.GetComponent<Rigidbody>();
+        //rb.velocity = -1 * Vector3.forward * speed * Time.deltaTime * 10;
+        rb.AddRelativeForce(speed * Vector3.forward * speed * Time.deltaTime);
+        
+        Debug.DrawRay(shark.transform.position, (shark.transform.forward * -1) * 7, Color.red);
+        //Add a Steer Controller
+        RaycastHit hit;
+        bool hitStick = Physics.Raycast(shark.transform.position, shark.transform.forward, out hit, 8f);
+
+        if (hitStick)
+        {
+            if (hit.collider.tag == "Terrain")
+                steer = true;
+        }
+        else
+        {
+            stillHitting = 0;
+        }
+
+        if (steer)
+            Steer(shark);
+    }
 
     public void Steer(GameObject shark) {
         stillHitting++;
