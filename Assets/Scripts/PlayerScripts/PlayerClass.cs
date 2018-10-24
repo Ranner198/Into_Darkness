@@ -21,7 +21,7 @@ public class PlayerClass {
     }
 
     //Set tha Speed
-    public void SetSpeed(float speed) {
+    public void SetSpeed(float speed) { 
         this.speed = speed;
     }
 

@@ -9,6 +9,7 @@ TagManager:
   - Shark
   - Terrain
   - Tracking
+  - Pickups
   layers:
   - Default
   - TransparentFX

@@ -42,7 +42,6 @@ public class SpearLogic : MonoBehaviour {
         if (coll.tag == "Shark")
         {
             transform.parent.SetParent(coll.transform);
-            print("Hit a Shark, Name: " + coll.gameObject.name);
             
             shark = GameObject.FindGameObjectsWithTag("Shark");
             for (int i = 0; i < shark.Length; i++)

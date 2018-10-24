@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    PlayerClass player = new PlayerClass(1.0f, 100, 3);
+    public static PlayerClass player = new PlayerClass(1.0f, 100, 3);
 
     public float speed = 6.0f, fallSpeed = 2.0f;
     private CharacterController cc;

@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: GunArmAnimation
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Multiplier
+  - m_Name: Direction
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0

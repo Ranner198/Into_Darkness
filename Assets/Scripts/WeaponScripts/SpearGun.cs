@@ -6,60 +6,81 @@ public class SpearGun : MonoBehaviour {
 
     //public Animator anim;
     public static bool shootState = false;
-
-    public int ammo = 5;
+    public int ammo = 20;
     public GameObject spear;
     public Text ammoText;
     public GameObject prefabObject;
     public GameObject spawnPoint;
-    private Rigidbody rb;
     public GameObject helment;
-    private bool isReloading = false;
 
     private Animator anim;
     private GameObject Spear;
     private bool shot = false;
+    private float frameCount;//Anim Frame Number
+    private Rigidbody rb;
+    private bool isReloading = false;
+    private bool loaded = true;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        PlayerMovement.player.SetAmmo(20);
     }
 
     void Update () {
 
+        //Show Ammo Left
         DisplayAmmo();
-
+        Debug.Log(PlayerMovement.player.GetAmmo());
+        //If airguage isn't pulled up allow transition to shooting state
         if (!CheckAirGaugeAnimationController.checkAirGuage)
         {
+            //Get Right Mouse Button
             if (Input.GetButtonDown("Fire2"))
             {
-                shootState = !shootState;
+                //Toggle Shooting Game State
+                if(!isReloading)
+                    shootState = !shootState;
             }
         }
 
+        //On shoot state
         if (shootState)
         {
-            if (ammo > 0 && !shot)
+            if (frameCount < 1)
+                frameCount += Time.deltaTime / 2;
+  
+            if (loaded)
+                anim.Play("Shoot");
+
+            if (Input.GetButtonDown("Fire1") && loaded)
             {
-                //GameObject prefab = Instantiate(prefabObject, spawnPoint.transform.position, spawnPoint.transform.rotation);
-                //prefab.transform.parent = spawnPoint.transform;
-                shot = true;
+                Shoot();
+                loaded = false;
+                shootState = false;
             }
-            anim.Play("Shoot");
-            if (Input.GetButtonDown("Fire1") && ammo > 0)
-            {
-                Shoot();            
-            }
-            else if (ammo <= 0 && !isReloading)
+
+            if (!loaded && !isReloading)
             {
                 StartCoroutine(Reload());
             }
-            else if (Input.GetButtonDown("Fire1") && ammo <= 0)
+
+            if (Input.GetButtonDown("Fire1") && PlayerMovement.player.GetAmmo() <= 0)
             {
                 //Add Dry Fire Sound
             }
         }
         else
-            anim.Play("Shootn't");
+        {
+            if (frameCount > 0)
+            {
+                anim.SetFloat("Direction", -1);
+                anim.Play("Shoot", 0, frameCount);
+                frameCount -= Time.deltaTime / 2;
+            }
+            else
+              anim.Play("Shootn't");
+        }
     }
 
     void Shoot()
@@ -69,24 +90,23 @@ public class SpearGun : MonoBehaviour {
         Spear.name = "Spear";
         rb = Spear.transform.GetChild(1).GetComponent<Rigidbody>();
         rb.AddRelativeForce(1000 * Time.deltaTime * 60 * Vector3.up);
-        //Destroy(clone, 3.0f);   
-        if(!isReloading)
-            StartCoroutine(Reload());
+        PlayerMovement.player.AddAmmo(-1); 
     }
 
     void DisplayAmmo ()
     {
-        ammoText.text = "Ammo: " + ammo;
+        ammoText.text = "Ammo: " + PlayerMovement.player.GetAmmo();
     }
 
     public IEnumerator Reload()
     {
         isReloading = true;
-        //Start Reload Animation
-        yield return new WaitForSeconds(Random.Range(5, 10));
-        ammo = 1;
+        yield return new WaitForSeconds(Random.Range(5, 8));
+        //anim.Play("Shoot");
+        loaded = true;
         shot = false;
         print("reloaded!");
         isReloading = false;
+        shootState = true;
     }
 }
