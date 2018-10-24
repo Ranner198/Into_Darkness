@@ -15,7 +15,6 @@ public class PlayerHealth : MonoBehaviour
 
     AudioSource playerAudio;
     PlayerMovement playerMovement;
-    PlayerClass player = new PlayerClass(1.0f, 100, 3);
     bool dead;
     bool damaged;
 
@@ -28,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         //set starting health of 100
-        player.SetHealth(startingHealth);
+        PlayerMovement.player.SetHealth(startingHealth);
         SetHealthText();
     }
 
@@ -54,11 +53,11 @@ public class PlayerHealth : MonoBehaviour
     {
         damaged = true;
 
-        player.TakeDamage(damage);
+        PlayerMovement.player.TakeDamage(damage);
 
         //playerAudio.Play();
 
-        dead = player.isDead();
+        dead = PlayerMovement.player.isDead();
 
         if (dead)
         {
@@ -81,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
 
     void SetHealthText()
     {
-        healthText.text = "Health: " + player.GetHealth();
+        healthText.text = "Health: " + PlayerMovement.player.GetHealth();
     }
 
     void OnTriggerEnter(Collider other)

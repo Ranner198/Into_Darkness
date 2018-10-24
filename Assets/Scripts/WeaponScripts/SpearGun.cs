@@ -31,7 +31,6 @@ public class SpearGun : MonoBehaviour {
 
         //Show Ammo Left
         DisplayAmmo();
-        Debug.Log(PlayerMovement.player.GetAmmo());
         //If airguage isn't pulled up allow transition to shooting state
         if (!CheckAirGaugeAnimationController.checkAirGuage)
         {
@@ -105,7 +104,6 @@ public class SpearGun : MonoBehaviour {
         //anim.Play("Shoot");
         loaded = true;
         shot = false;
-        print("reloaded!");
         isReloading = false;
         shootState = true;
     }
