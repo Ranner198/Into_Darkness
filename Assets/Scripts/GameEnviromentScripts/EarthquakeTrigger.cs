@@ -5,13 +5,46 @@ using UnityEngine;
 public class EarthquakeTrigger : MonoBehaviour
 {
 
+    float timer = 10;
+    bool timerCheck = false;
+
+    void Update()
+    {
+        if (timerCheck)
+        {
+            timer -= Time.deltaTime;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Player")
         {
-            CameraShake earthquake = other.GetComponent<CameraShake>();
-            earthquake.shakecamera(5, 1);
+            timerCheck = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            timerCheck = false;
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            CameraShake earthquake = other.GetComponent<CameraShake>();
+            earthquake.shakecamera();
+
+            if (timer <= 0)
+            {
+                PlayerHealth health = other.GetComponent<PlayerHealth>();
+                health.Death();
+            }
         }
     }
 }
