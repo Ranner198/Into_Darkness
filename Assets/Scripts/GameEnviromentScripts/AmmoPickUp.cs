@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OxygenTank : MonoBehaviour
-{
+public class PlayerPickup : MonoBehaviour {
 
-    void OnTriggerEnter(Collider coll)
+    private void OnTriggerEnter(Collider coll)
     {
         if (coll.name == "Player")
         {
-            PlayerMovement.player.AddOxygen(150);
+            PlayerMovement.player.AddAmmo(3);
             Destroy(gameObject);
         }
     }
 }
-

@@ -61,6 +61,18 @@ public class PlayerClass {
         return this.oxygenLevels;
     }
 
+    //Oxygen Modifier
+    public void SubtractOxygen(float val)
+    {
+        this.oxygenLevels -= val;
+    }
+
+    //Add Oxygen Level
+    public void AddOxygen(float val)
+    {
+        this.oxygenLevels += val;
+    }
+
     //Set tha Ammo
     public void SetAmmo(int num)
     {
