@@ -28,6 +28,7 @@ public class EarthquakeTrigger : MonoBehaviour
     {
         if (other.name == "Player")
         {
+            timer = 10;
             timerCheck = false;
             Destroy(gameObject);
         }
