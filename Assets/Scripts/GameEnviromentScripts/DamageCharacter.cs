@@ -31,10 +31,10 @@ public class DamageCharacter : MonoBehaviour {
         if (coll.name == "Player")
         {
             time++;
-            if (time % 50 == 0)
+            cameraShakeScript.shakecamera();
+            if (time % 40 == 0)
             {
                 PlayerMovement.player.TakeDamage(5);
-                cameraShakeScript.shakecamera();
             }
         }
     }
