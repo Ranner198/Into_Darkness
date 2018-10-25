@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class AmmoItem : MonoBehaviour
 {
-    public GameObject SpearGun;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Player")
         {
-            SpearGun.GetComponent<SpearGun>().ammo += 100;
+            PlayerMovement.player.AddAmmo(100);
             Destroy(gameObject);
         }
     }

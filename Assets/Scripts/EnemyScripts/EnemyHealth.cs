@@ -43,6 +43,8 @@ public class EnemyHealth : MonoBehaviour {
         dead = true;
 
         enemyAudio.clip = deathClip;
+
+        //load end scene here
         //enemyAudio.Play();
 
     }
