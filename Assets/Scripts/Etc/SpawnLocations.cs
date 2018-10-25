@@ -45,7 +45,7 @@ public class SpawnLocations : MonoBehaviour {
         spawnCords.y = sampleHeight;
 
         int num = (Random.Range(0, 100));
-
+        print(num);
         if (num >= objectSpawnRate) {
             GameObject oxygen = Instantiate(prefab[1], spawnCords, Quaternion.identity);
             oxygen.name = "Oxygen Spawn";
