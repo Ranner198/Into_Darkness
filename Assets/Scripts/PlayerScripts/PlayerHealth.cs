@@ -57,9 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
         //playerAudio.Play();
 
-        dead = PlayerMovement.player.isDead();
-
-        if (dead)
+        if (PlayerMovement.player.GetHealth() <= 0)
         {
             Death();
         }
@@ -83,20 +81,17 @@ public class PlayerHealth : MonoBehaviour
         healthText.text = "Health: " + PlayerMovement.player.GetHealth();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collider other)
     {
         if (other.gameObject.tag == "Shark")
         {
             TakeDamage(5);
-            if (debugMode) print("damage dealt");
+            print("damage dealt");
         }
-
     }
 
-    void OnTriggerExit(Collider other)
+    void onCollisionStay(Collider other)
     {
-        if (debugMode) print("exit trigger with _player");
+        print("woohoo");
     }
-
-
 }

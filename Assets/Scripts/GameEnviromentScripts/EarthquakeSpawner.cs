@@ -15,15 +15,18 @@ public class EarthquakeSpawner : MonoBehaviour {
 
     void Start()
     {
+
         spawnItems();
     }
 
     void spawnItems()
     {
-
-        while (spawnCounter < spawnPoints.Length - 1)
+        while (spawnCounter < spawnPoints.Length)
         {
-            Instantiate(earthquakePrefab, spawnPoints[spawnCounter].transform.position, Quaternion.identity);
+            GameObject EartquakeZone = Instantiate(earthquakePrefab, spawnPoints[spawnCounter].transform.position, Quaternion.identity);
+            EartquakeZone.name = "EarthquakeZone";
+            EartquakeZone.tag = "EarthquakeZone";
+
             spawnCounter++;
         }
     }

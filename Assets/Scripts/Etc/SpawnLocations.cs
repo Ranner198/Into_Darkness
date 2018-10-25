@@ -44,17 +44,17 @@ public class SpawnLocations : MonoBehaviour {
         Vector3 spawnCords = Locations[loc].transform.position;
         spawnCords.y = sampleHeight;
 
-        var num = (Random.Range(0, 100));
+        int num = (Random.Range(0, 100));
 
-        if (num > objectSpawnRate) {
+        if (num >= objectSpawnRate) {
+            GameObject oxygen = Instantiate(prefab[1], spawnCords, Quaternion.identity);
+            oxygen.name = "Oxygen Spawn";
+            oxygen.transform.parent = gameObject.transform;
+        }
+        else {
             GameObject ammo = Instantiate(prefab[0], spawnCords, Quaternion.identity);
             ammo.name = "Ammo Spawn";
             ammo.transform.parent = gameObject.transform;
-        }
-        else {
-            GameObject oxygen = Instantiate(prefab[0], spawnCords, Quaternion.identity);
-            oxygen.name = "Oxygen Spawn";
-            oxygen.transform.parent = gameObject.transform;
         }
     }
 }
