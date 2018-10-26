@@ -81,7 +81,7 @@ public class PlayerHealth : MonoBehaviour
         healthText.text = "Health: " + PlayerMovement.player.GetHealth();
     }
 
-    void OnCollisionEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Shark")
         {
@@ -90,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void onCollisionStay(Collider other)
+    void onTriggerStay(Collider other)
     {
         print("woohoo");
     }
