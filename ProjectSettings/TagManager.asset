@@ -10,6 +10,7 @@ TagManager:
   - Terrain
   - Tracking
   - Pickups
+  - EarthquakeZone
   layers:
   - Default
   - TransparentFX

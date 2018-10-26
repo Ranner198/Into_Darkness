@@ -1427,6 +1427,16 @@ Prefab:
       propertyPath: m_Center.z
       value: -0.8586211
       objectReference: {fileID: 0}
+    - target: {fileID: 82452379533199862, guid: 22c8427e2bad10a4285c0949f67f0d9c,
+        type: 2}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82452379533199862, guid: 22c8427e2bad10a4285c0949f67f0d9c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65258159979736480, guid: 22c8427e2bad10a4285c0949f67f0d9c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 22c8427e2bad10a4285c0949f67f0d9c, type: 2}
@@ -2331,7 +2341,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ad6a66fbcf0bb14a9b820be25587265, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a3f79f419e63474458b59cfac7f9a3e0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -6927,7 +6937,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1290071910}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 795784698b4d1ef4f895edd62a2705d2, type: 3}
   m_Name: 
@@ -6955,7 +6965,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1290071910}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6998,7 +7008,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1290071910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -14.4, z: 44}
+  m_LocalPosition: {x: 0, y: -15.5, z: 44}
   m_LocalScale: {x: 500, y: 74.83634, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
