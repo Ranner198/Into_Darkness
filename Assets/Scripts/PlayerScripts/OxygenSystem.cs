@@ -6,37 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class OxygenSystem : MonoBehaviour {
 
-    public float startingOxygen = 100.0f;
     public Text oxygenText;
     public AudioClip deathClip;
+    public float startingOxygen = 300;
+    public float maxOxygen = 300;
 
     AudioSource playerAudio;
-    PlayerMovement playerMovement;
-    PlayerClass player = new PlayerClass(1.0f, 100, 3);
 
-    void Awake()
+    void Start()
     {
         //set components
         playerAudio = GetComponent<AudioSource>();
-        playerMovement = GetComponent<PlayerMovement>();
 
         //set starting oxygen of 200
-        player.SetOxygenLevel(startingOxygen);
+        PlayerMovement.player.SetOxygenLevel(startingOxygen);
         SetOxygenText();
     }
 
     void Update()
     {
         SetOxygenText();
-        startingOxygen -= Time.deltaTime;
-        player.SetOxygenLevel(startingOxygen);
+        PlayerMovement.player.SubtractOxygen(Time.deltaTime);
         
         //playerAudio.Play();
 
-        if (startingOxygen <= 0)
+        if (PlayerMovement.player.GetOxygenLevel() <= 0)
         {
             Death();
         }
+
+        if (PlayerMovement.player.GetOxygenLevel() > maxOxygen)
+            PlayerMovement.player.SetOxygenLevel(maxOxygen);
     }
 
     void Death()
@@ -45,13 +45,13 @@ public class OxygenSystem : MonoBehaviour {
         //playerAudio.clip = deathClip;
         //playerAudio.Play();
 
-        playerMovement.enabled = false;
+        //playerMovement.enabled = false;
         SceneManager.LoadScene("GameOver");
 
     }
 
     void SetOxygenText()
     {
-        oxygenText.text = "Oxygen: " + System.Math.Round(player.GetOxygenLevel(), 2) + "%";
+        oxygenText.text = "Oxygen: " + System.Math.Round(PlayerMovement.player.GetOxygenLevel(), 2) + "%";
     }
 }

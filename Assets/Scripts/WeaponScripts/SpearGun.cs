@@ -6,7 +6,7 @@ public class SpearGun : MonoBehaviour {
 
     //public Animator anim;
     public static bool shootState = false;
-    public int ammo = 20;
+    public int ammo = 20, maxAmmo;
     public GameObject spear;
     public Text ammoText;
     public GameObject prefabObject;
@@ -24,11 +24,14 @@ public class SpearGun : MonoBehaviour {
     void Start()
     {
         anim = GetComponent<Animator>();
-        PlayerMovement.player.SetAmmo(20);
+        PlayerMovement.player.SetAmmo(ammo);
     }
 
     void Update () {
 
+        //Check and make sure ammo doesnt exceed max ammo variable
+        if (PlayerMovement.player.GetAmmo() > maxAmmo)
+            PlayerMovement.player.SetAmmo(maxAmmo);
         //Show Ammo Left
         DisplayAmmo();
         //If airguage isn't pulled up allow transition to shooting state
@@ -52,7 +55,7 @@ public class SpearGun : MonoBehaviour {
             if (loaded)
                 anim.Play("Shoot");
 
-            if (Input.GetButtonDown("Fire1") && loaded)
+            if (Input.GetButtonDown("Fire1") && loaded && PlayerMovement.player.GetAmmo() > 0)
             {
                 Shoot();
                 loaded = false;

@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+ProjectSettings/ProjectVersion.txt
+Assets/Scenes/Game_Scene.unity
+Assets/Scenes/Game_Scene.unity
+Assets/Scripts/Etc/SpawnLocations.cs

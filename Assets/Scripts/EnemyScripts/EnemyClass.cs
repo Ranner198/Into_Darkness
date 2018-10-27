@@ -253,6 +253,8 @@ public class EnemyClass
         if (!AttackDir)
         {
             dir = shark.transform.GetDirection(PlayerPos);
+            dir.y += .025f;
+            Debug.Log(dir);
             AttackDir = true;
         }
        
@@ -261,39 +263,12 @@ public class EnemyClass
 
         float Distance = shark.transform.GetDistance(PlayerPos); //Find the distance from the player
 
-        //--Retired --
-        //float MapHypotnuse = Mathf.Sqrt(Mathf.Pow(terrain.terrainData.size.x, 2) + (Mathf.Pow(terrain.terrainData.size.z, 2)));
-
-        //rotate us over time according to speed until we are in the required rotation
-        Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
-
         Quaternion lookRot = Quaternion.LookRotation(dir * Mathf.Rad2Deg);
 
         //rotate us over time according to speed until we are in the required rotation
         shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
 
         rb.velocity = (dir * speed * Time.deltaTime * attackSpeed * 15);
-
-        /* -- Retired --
-        if (Distance < 2.5)
-        {
-            dir *= -1;
-        }
-
-        if (Distance > MapHypotnuse / 2)
-        {
-            rb.velocity = (-dir * speed * Time.deltaTime * attackSpeed * 15);
-        }
-        else
-        {
-            
-        }
-        //Stop when reach player
-        if (shark.transform.GetDistance(PlayerPos) < 3)
-        {
-            rb.velocity = Vector3.zero;
-        }
-        */
     }
 
     public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, Terrain terrain, float rotateSpeed)
