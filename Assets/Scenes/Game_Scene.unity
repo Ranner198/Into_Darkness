@@ -9126,7 +9126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 5
-  maxAmmo: 5
+  maxAmmo: 20
   spear: {fileID: 1613644729788886, guid: 9a645279bdecf0c40ac9434867579057, type: 2}
   ammoText: {fileID: 1170458971}
   prefabObject: {fileID: 1613644729788886, guid: 9a645279bdecf0c40ac9434867579057,
@@ -9248,7 +9248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeight: 30
   minHeight: 20
-  spawnNum: 20
+  spawnNum: 40
   shark: {fileID: 1402991160065400, guid: 22c8427e2bad10a4285c0949f67f0d9c, type: 2}
   player: {fileID: 464541276}
   terrain: {fileID: 1180252740}

@@ -6,7 +6,7 @@ public class SpearGun : MonoBehaviour {
 
     //public Animator anim;
     public static bool shootState = false;
-    public int ammo = 20, maxAmmo;
+    public int ammo = 5, maxAmmo = 20;
     public GameObject spear;
     public Text ammoText;
     public GameObject prefabObject;

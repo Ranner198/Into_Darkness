@@ -9,7 +9,7 @@ public class AmmoItem : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            PlayerMovement.player.AddAmmo(100);
+            PlayerMovement.player.AddAmmo(5);
             Destroy(gameObject);
         }
     }

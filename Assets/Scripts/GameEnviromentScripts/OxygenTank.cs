@@ -9,7 +9,7 @@ public class OxygenTank : MonoBehaviour
     {
         if (coll.name == "Player")
         {
-            PlayerMovement.player.AddOxygen(150);
+            PlayerMovement.player.AddOxygen(100);
             Destroy(gameObject);
         }
     }
