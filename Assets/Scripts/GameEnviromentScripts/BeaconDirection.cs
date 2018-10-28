@@ -29,7 +29,8 @@ public class BeaconDirection : MonoBehaviour {
             target = GameObject.FindGameObjectWithTag("Sub");
         else
         {
-           mover.transform.LookAt(target.transform);
+            mover.transform.LookAt(target.transform);
+            mover.transform.position = Vector3.forward;
         }
 
         SR.enabled = play ? true : false;
