@@ -1371,7 +1371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402991160065400}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 23.134796, y: 40.1, z: 17.7}
+  m_LocalPosition: {x: -47.95726, y: 27.53, z: 25.305817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4078516083220112}
@@ -3409,8 +3409,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 9ce427d13fe97964499de8e369025f9a, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3419,7 +3419,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 16.237808
+  MinDistance: 35.959435
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -3583,9 +3583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ca6edddf478f3499ecc20ac095f471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sound:
-  - {fileID: 8300000, guid: 9ce427d13fe97964499de8e369025f9a, type: 3}
-  - {fileID: 8300000, guid: 07145de6d6bf230489286f3c8fd82f64, type: 3}
+  Sound: {fileID: 8300000, guid: 9ce427d13fe97964499de8e369025f9a, type: 3}
   audioSource: {fileID: 82452379533199862}
 --- !u!137 &137947133247619462
 SkinnedMeshRenderer:

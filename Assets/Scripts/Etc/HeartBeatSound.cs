@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class HeartBeatSound : MonoBehaviour {
 
-    public AudioClip[] Sound;
+    public AudioClip Sound;
     public AudioSource audioSource;
 
     private bool isPlaying = false;
-    private float timer, setter = 10;
     private GameObject player;
-
-    public EnemyClass shark;
 
     void Start () {
         audioSource = GetComponent<AudioSource>();
@@ -21,19 +18,17 @@ public class HeartBeatSound : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float distance = (transform.position - player.transform.position).magnitude;
-        if (distance < 35)
+        if (distance < 35 && !isPlaying)
         {
+            print("Playing");
             isPlaying = true;
-            audioSource.PlayOneShot(Sound[0], 1.0f);
+            audioSource.PlayOneShot(Sound, 4);
         }
-
-        if (timer >= 0 && isPlaying)
-            timer -= Time.deltaTime;
-
-        if (timer < 0 && isPlaying)
-        {   
+        if (distance > 35 && isPlaying) 
+        {
+            print("Stopped");
             isPlaying = false;
-            timer = setter;
+            audioSource.Stop();
         }
     }
 }
