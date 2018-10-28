@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
         player.SetSpeed(speed);
         cc = GetComponent<CharacterController>();
-        player.SetOxygenLevel(300);
 	}
 
     void Update()

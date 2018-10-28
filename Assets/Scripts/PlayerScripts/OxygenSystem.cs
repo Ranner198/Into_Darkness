@@ -46,7 +46,7 @@ public class OxygenSystem : MonoBehaviour {
         //playerAudio.Play();
 
         //playerMovement.enabled = false;
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Game_Over_Scene");
 
     }
 

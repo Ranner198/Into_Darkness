@@ -342,7 +342,6 @@ GameObject:
   - component: {fileID: 82452379533199862}
   - component: {fileID: 114971173685190488}
   - component: {fileID: 114523618216411036}
-  - component: {fileID: 65258159979736480}
   - component: {fileID: 65233832972525990}
   m_Layer: 11
   m_Name: SharkNewPrefab
@@ -1372,7 +1371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402991160065400}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 23.134796, y: 27.431477, z: -10.83}
+  m_LocalPosition: {x: 23.134796, y: 40.1, z: 17.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4078516083220112}
@@ -2605,7 +2604,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1694376675731550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3387,20 +3386,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0775642, y: 1.2418957, z: 1.5295668}
-  m_Center: {x: -0.032806396, y: 0.12094784, z: 2.0381894}
---- !u!65 &65258159979736480
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1402991160065400}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.101202, y: 1.2418957, z: 0.42161083}
+  m_Center: {x: -0.044625282, y: 0.12094784, z: 2.5921674}
 --- !u!65 &65386768058901848
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3411,8 +3398,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 2, z: 6.124769}
-  m_Center: {x: 0, y: 0, z: -1.1549692}
+  m_Size: {x: 3, y: 2, z: 6.7174654}
+  m_Center: {x: 0, y: 0, z: -0.8586211}
 --- !u!82 &82452379533199862
 AudioSource:
   m_ObjectHideFlags: 1

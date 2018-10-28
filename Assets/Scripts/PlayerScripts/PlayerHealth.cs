@@ -73,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.enabled = false;
 
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Game_Over_Scene");
     }
 
     void SetHealthText()

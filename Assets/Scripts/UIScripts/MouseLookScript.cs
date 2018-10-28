@@ -48,6 +48,11 @@ public class MouseLookScript : MonoBehaviour
             yaw += speedH * Input.GetAxis("Mouse X") * Time.deltaTime * 60;
             pitch -= speedV * Input.GetAxis("Mouse Y") * Time.deltaTime * 60;
             var change = Quaternion.Euler(pitch, yaw, 0.0f);
+            //Lock camera bounds
+            if (pitch > 90)
+                pitch = 90;
+            if (pitch < -90)
+                pitch = -90;
             transform.rotation = Quaternion.Slerp(transform.rotation, change, Time.deltaTime);
             Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
             Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime * helmentTurnSpeed);

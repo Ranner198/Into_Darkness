@@ -25,7 +25,6 @@ public class RenderFromArray : MonoBehaviour {
 
         //Update temp variable to Timer
         var temp = PlayerMovement.player.GetOxygenLevel();
-        Debug.Log(PlayerMovement.player.GetOxygenLevel());
         mins = 0;
         tens = 0;
 
@@ -41,7 +40,6 @@ public class RenderFromArray : MonoBehaviour {
             temp -= 10;
             tens++;
         }
-        Debug.Log(temp);
         SR[1].GetComponent<SpriteRenderer>().sprite = numbers[Mathf.FloorToInt(mins)];
         SR[2].GetComponent<SpriteRenderer>().sprite = numbers[Mathf.FloorToInt(tens)];
         SR[3].GetComponent<SpriteRenderer>().sprite = numbers[Mathf.FloorToInt(temp)];

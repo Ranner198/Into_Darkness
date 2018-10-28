@@ -14,6 +14,5 @@ public class PlayerSpawner : MonoBehaviour
         chooser = Random.Range(0, spawnPoints.Length);
 
         player.transform.position = spawnPoints[chooser].transform.position;
-        print(chooser);
     }
 }

@@ -1,44 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {
 
     public GameObject Player;
-    public Camera main;
-    public PlayerMovement pm;
-    public MouseLookScript mls;
 
-    public bool lost = false;
-
-    void Start()
+    private void OnTriggerEnter(Collider coll)
     {
-        pm = Player.GetComponent<PlayerMovement>();
-        main = Player.transform.GetChild(0).GetComponent<Camera>();
-        mls = main.GetComponent<MouseLookScript>();
-    }
-
-    void Update()
-    {
-        if (lost)
+        if (coll.gameObject == Player)
         {
-            Player.GetComponent<Collider>().enabled = false;
-
-            //pm.enabled = false;
-            mls.enabled = false;
-
-            Player.transform.Translate(Vector3.down * 50);
+            SceneManager.LoadScene("Game_Over_Scene");
         }
-    }
-
-    void OnTriggerEnter(Collider coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            print("Working");
-            lost = true;
-        }
-
     }
 }
