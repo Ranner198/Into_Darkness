@@ -30,7 +30,8 @@ public class BeaconDirection : MonoBehaviour {
         else
         {
             mover.transform.LookAt(target.transform);
-            mover.transform.position = Vector3.forward;
+            dir = mover.transform.forward;
+            mover.transform.position = dir;
         }
 
         SR.enabled = play ? true : false;
@@ -38,13 +39,16 @@ public class BeaconDirection : MonoBehaviour {
 
     private void OnTriggerStay(Collider coll)
     {
-        counter++;
         if (coll.gameObject == player)
         {
-            if (counter % 50 == 0)
+            counter++;
+            if (coll.gameObject == player)
             {
-                play = !play;
-                audioSource.PlayOneShot(beaconSound);
+                if (counter % 50 == 0)
+                {
+                    play = !play;
+                    audioSource.PlayOneShot(beaconSound);
+                }
             }
         }
     }

@@ -254,7 +254,6 @@ public class EnemyClass
         {
             dir = shark.transform.GetDirection(PlayerPos);
             dir.y += .025f;
-            Debug.Log(dir);
             AttackDir = true;
         }
        

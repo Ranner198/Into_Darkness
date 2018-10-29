@@ -8,6 +8,15 @@ public class EarthquakeTrigger : MonoBehaviour
     float timer = 10;
     bool timerCheck = false;
 
+    private bool isPlaying = false;
+    public AudioClip earthquakeSound;
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (timerCheck)
@@ -21,6 +30,7 @@ public class EarthquakeTrigger : MonoBehaviour
         if (other.name == "Player")
         {
             timerCheck = true;
+            audioSource.PlayOneShot(earthquakeSound, 1f);
         }
     }
 
@@ -31,6 +41,7 @@ public class EarthquakeTrigger : MonoBehaviour
             timer = 10;
             timerCheck = false;
             Destroy(gameObject);
+            isPlaying = false;
         }
     }
 

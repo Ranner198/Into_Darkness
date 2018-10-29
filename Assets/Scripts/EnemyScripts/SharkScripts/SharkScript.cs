@@ -21,8 +21,6 @@ public class SharkScript : MonoBehaviour
 
     private int lastState = -1;
 
-    private PlayerHealth playerHealth;
-
     public bool decisionTime = false;
     public bool debugMode = false;
 
@@ -31,7 +29,6 @@ public class SharkScript : MonoBehaviour
     void Start()
     {
         CircleArea = new GameObject[4];
-        //playerHealth = player.GetComponent<PlayerHealth>();
 
         shark.SetState(0);
         shark.GenerateAggro();
@@ -86,7 +83,6 @@ public class SharkScript : MonoBehaviour
             shark.Attack(player, gameObject, terrain, 5f);
             if (debugMode)
                 print("attacking");
-            //playerHealth.TakeDamage(25);
         }
         else if (shark.GetState() == 3)
         {

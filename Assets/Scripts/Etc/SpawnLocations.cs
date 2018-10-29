@@ -90,7 +90,7 @@ public class SpawnLocations : MonoBehaviour
 
         var num = (Random.Range(0, 100));
 
-        if (num > 0 && num <= objectSpawnRate[0])
+        if (num >= 0 && num <= objectSpawnRate[0])
         {
             GameObject ammo = Instantiate(prefab[0], spawnCords, Quaternion.identity);
             ammo.name = "Ammo Spawn";

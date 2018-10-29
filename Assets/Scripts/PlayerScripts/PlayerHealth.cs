@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public Image damageImage;
     public Text healthText;
     public AudioClip deathClip;
-    public float flashSpeed = 5f;
+    public float flashSpeed = 5f, sharkTimer = 1;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
     AudioSource playerAudio;
@@ -55,6 +55,9 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
 
+        //Shark COllition timer fix
+        if (sharkTimer >= 0)
+            sharkTimer -= Time.deltaTime;
     }
 
     public void TakeDamage(int damage)
@@ -83,15 +86,13 @@ public class PlayerHealth : MonoBehaviour
     {
         healthText.text = "Health: " + PlayerMovement.player.GetHealth();
     }
-
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider coll)
     {
-        if (other.gameObject.tag == "Shark")
+        if (coll.gameObject.tag == "Shark" && sharkTimer < 0)
         {
+            sharkTimer = 1;
             TakeDamage(10);
-            print("damage dealt");
+            print(coll);
         }
-
     }
-
 }

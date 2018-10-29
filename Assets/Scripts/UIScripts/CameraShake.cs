@@ -21,7 +21,6 @@ public class CameraShake : MonoBehaviour
 
     void Update()
     {
-        print(originalPos);
         if (shake)
         {
 
