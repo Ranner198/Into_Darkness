@@ -30,8 +30,6 @@ public class BeaconDirection : MonoBehaviour {
         else
         {
             mover.transform.LookAt(target.transform);
-            dir = mover.transform.forward;
-            mover.transform.position = dir;
         }
 
         SR.enabled = play ? true : false;
