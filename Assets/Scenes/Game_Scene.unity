@@ -2709,7 +2709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 285718388}
-  player: {fileID: 1734048382}
+  player: {fileID: 464541276}
   seaMonsterPrefab: {fileID: 1332662330266606, guid: 0f3f97bf5e98f5e4b9fd8805915240d0,
     type: 2}
   playerLocation: {fileID: 1846911301}
