@@ -85,13 +85,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.tag == "Shark")
         {
-            TakeDamage(5);
+            TakeDamage(10);
             print("damage dealt");
         }
+
     }
 
-    void onTriggerStay(Collider other)
-    {
-        print("woohoo");
-    }
 }
