@@ -36,16 +36,9 @@ public class PlayerHealth : MonoBehaviour
     {
         SetHealthText();
 
-        if (damaged)
-        {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
+        damageImage.color = damaged ? flashColour : Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 
-        damaged = false;
+        //damaged = false;
     }
 
 

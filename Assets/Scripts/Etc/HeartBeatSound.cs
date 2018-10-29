@@ -20,13 +20,11 @@ public class HeartBeatSound : MonoBehaviour {
         float distance = (transform.position - player.transform.position).magnitude;
         if (distance < 35 && !isPlaying)
         {
-            print("Playing");
             isPlaying = true;
             audioSource.PlayOneShot(Sound, 4);
         }
         if (distance > 35 && isPlaying) 
         {
-            print("Stopped");
             isPlaying = false;
             audioSource.Stop();
         }
