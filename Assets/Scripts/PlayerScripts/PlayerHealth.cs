@@ -29,9 +29,7 @@ public class PlayerHealth : MonoBehaviour
         //set starting health of 100
         PlayerMovement.player.SetHealth(startingHealth);
         SetHealthText();
-
     }
-
 
     void Update()
     {
@@ -52,8 +50,12 @@ public class PlayerHealth : MonoBehaviour
             damageImage.color = Color.Lerp(damageImage.color, Transparent, 20 * Time.deltaTime);
         }
 
-    }
+        if (PlayerMovement.player.GetHealth() <= 0)
+        {
+            Death();
+        }
 
+    }
 
     public void TakeDamage(int damage)
     {
@@ -62,11 +64,6 @@ public class PlayerHealth : MonoBehaviour
         PlayerMovement.player.TakeDamage(damage);
 
         //playerAudio.Play();
-
-        if (PlayerMovement.player.GetHealth() <= 0)
-        {
-            Death();
-        }
     }
 
 

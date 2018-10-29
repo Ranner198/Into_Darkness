@@ -32,7 +32,7 @@ public class DamageCharacter : MonoBehaviour {
         {
             time++;
             cameraShakeScript.shakecamera();
-            if (time % 40 == 0)
+            if (time % 20 == 0)
             {
                 PlayerMovement.player.TakeDamage(5);
             }

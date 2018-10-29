@@ -9,8 +9,6 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 6.0f, fallSpeed = 2.0f;
     private CharacterController cc;
 
-    public CameraShake cs;
-
 	void Start () {
         player.SetSpeed(speed);
         cc = GetComponent<CharacterController>();

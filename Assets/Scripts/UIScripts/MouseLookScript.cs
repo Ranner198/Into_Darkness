@@ -55,11 +55,8 @@ public class MouseLookScript : MonoBehaviour
                 pitch = -90;
             transform.rotation = Quaternion.Slerp(transform.rotation, change, Time.deltaTime);
             Player.transform.rotation = Quaternion.Euler(0, yaw, 0.0f);
-            Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime * helmentTurnSpeed);
-            if (!CameraShake.shake)
-            {                
-                Helmet.transform.position = transform.position;
-            }
+            Helmet.transform.rotation = Quaternion.Slerp(Helmet.transform.rotation, change, Time.deltaTime * helmentTurnSpeed);        
+            Helmet.transform.position = transform.position;
         }    
     }
 }

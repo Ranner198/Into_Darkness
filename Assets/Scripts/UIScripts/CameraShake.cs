@@ -6,8 +6,8 @@ public class CameraShake : MonoBehaviour
 {
     // Transform of the camera to shake. Grabs the gameObject's transform
     // if null.
-    public GameObject camTransform;
-
+    public GameObject HelmetPlaceHolder, HelmentObject;
+  
     // How long the object should shake for.
     public float shakeDuration = 0f;
 
@@ -21,18 +21,19 @@ public class CameraShake : MonoBehaviour
 
     void Update()
     {
+        print(originalPos);
         if (shake)
         {
+
             if (shakeDuration > 0)
             {
-                camTransform.transform.position = originalPos + Random.insideUnitSphere * shakeAmount;
-
+                HelmentObject.transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
                 shakeDuration -= Time.deltaTime * decreaseFactor;
             }
             else
             {
                 shakeDuration = 1f;
-                camTransform.transform.position = originalPos;
+                HelmentObject.transform.localPosition = originalPos;
                 shake = false;
             }
         }
@@ -41,6 +42,6 @@ public class CameraShake : MonoBehaviour
     public void shakecamera()
     {
         shake = true;
-        originalPos = camTransform.transform.position;
+        originalPos = Vector3.zero;
     }
 }

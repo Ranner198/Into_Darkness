@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UIDamping : MonoBehaviour {
 
-    public GameObject helmet;
+    public GameObject helmetPos;
+    public GameObject helmetHolder;
 
 	void LateUpdate () {
-        transform.position = helmet.transform.position;
-        transform.rotation = helmet.transform.rotation;
+        transform.position = helmetPos.transform.position;
+        transform.rotation = helmetHolder.transform.rotation;
 	}
 }
