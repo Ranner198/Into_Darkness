@@ -5,8 +5,17 @@ using UnityEngine;
 public class ThermalVentTrigger : MonoBehaviour
 {
 
-    float timer = 10;
+    double timer = 0.2;
     bool timerCheck = false;
+
+    public GameObject Player;
+    CameraShake cameraShakeScript;
+
+    void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        cameraShakeScript = Player.transform.GetChild(2).GetComponent<CameraShake>();
+    }
 
     void Update()
     {
@@ -20,6 +29,7 @@ public class ThermalVentTrigger : MonoBehaviour
     {
         if (other.name == "Player")
         {
+            cameraShakeScript.shakecamera();
             timerCheck = true;
         }
     }
@@ -36,14 +46,13 @@ public class ThermalVentTrigger : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            CameraShake earthquake = other.GetComponent<CameraShake>();
-            earthquake.shakecamera();
+            cameraShakeScript.shakecamera();
 
             if (timer <= 0.0)
             {
                 PlayerHealth health = other.GetComponent<PlayerHealth>();
-                health.TakeDamage(1);
-                timer = 10;
+                health.TakeDamage(5);
+                timer = 0.2;
             }
         }
     }
