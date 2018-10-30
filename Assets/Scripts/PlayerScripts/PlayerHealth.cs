@@ -66,6 +66,21 @@ public class PlayerHealth : MonoBehaviour
 
         PlayerMovement.player.TakeDamage(damage);
 
+        if (damaged)
+        {
+            Color Opaque = new Color(1, 1, 1, 1);
+            damageImage.color = Color.Lerp(damageImage.color, Opaque, 20 * Time.deltaTime);
+            if (damageImage.color.a >= 0.8) //Almost Opaque, close enough
+            {
+                damaged = false;
+            }
+        }
+        if (!damaged)
+        {
+            Color Transparent = new Color(1, 1, 1, 0);
+            damageImage.color = Color.Lerp(damageImage.color, Transparent, 20 * Time.deltaTime);
+        }
+
         //playerAudio.Play();
     }
 
@@ -86,6 +101,7 @@ public class PlayerHealth : MonoBehaviour
     {
         healthText.text = "Health: " + PlayerMovement.player.GetHealth();
     }
+
     void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Shark" && sharkTimer < 0)

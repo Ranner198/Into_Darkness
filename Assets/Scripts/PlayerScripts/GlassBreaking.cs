@@ -8,9 +8,17 @@ public class GlassBreaking : MonoBehaviour
     public Material mat;
     public Texture[] texture;
 
+    public AudioClip glassSound;
+    public AudioSource audioSource;
+    public string textureName;
+    public string previousTextureName;
+
+
     void Start()
     {
         mat.mainTexture = texture[0];
+        textureName = mat.mainTexture.name;
+        previousTextureName = textureName;
     }
 
     void Update()
@@ -27,5 +35,17 @@ public class GlassBreaking : MonoBehaviour
             mat.mainTexture = texture[3];
         else if (health <= 20)
             mat.mainTexture = texture[4];
+
+        textureName = mat.mainTexture.name;
+        PlayAudio();
+    }
+
+    void PlayAudio()
+    {
+        if(previousTextureName != textureName)
+        {
+            audioSource.PlayOneShot(glassSound, 1f);
+            previousTextureName = textureName;
+        }
     }
 }
