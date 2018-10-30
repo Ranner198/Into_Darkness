@@ -21,6 +21,8 @@ public class SpearGun : MonoBehaviour {
     private bool isReloading = false;
     private bool loaded = true;
 
+    private float VRCoolDown = 0;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -37,25 +39,40 @@ public class SpearGun : MonoBehaviour {
         //If airguage isn't pulled up allow transition to shooting state
         if (!CheckAirGaugeAnimationController.checkAirGuage)
         {
-            //Get Right Mouse Button
-            if (Input.GetButtonDown("Fire2"))
+
+            if (Input.GetButton("Fire2") && VRCoolDown < 0 && !shootState)
             {
-                //Toggle Shooting Game State
-                if(!isReloading)
-                    shootState = !shootState;
+                VRCoolDown = 2;
+                print("Working");
+                if (!isReloading)
+                    shootState = true;
+                return;
+            }
+            else if (Input.GetButton("Fire2") && VRCoolDown < 0 && shootState)
+            {
+                VRCoolDown = 2;
+                print("Working");
+                if (!isReloading)
+                    shootState = false;
+                return;
             }
         }
+
+        if (VRCoolDown >= 0)
+            VRCoolDown -= Time.deltaTime;
 
         //On shoot state
         if (shootState)
         {
+            print(true);
             if (frameCount < 1)
                 frameCount += Time.deltaTime / 2;
   
             if (loaded)
                 anim.Play("Shoot");
-
-            if (Input.GetButtonDown("Fire1") && loaded && PlayerMovement.player.GetAmmo() > 0)
+            float input = Input.GetAxis("Fire");
+            print(input);
+            if (Input.GetButtonDown("Fire1") || input > 0.1f && loaded && PlayerMovement.player.GetAmmo() > 0)
             {
                 Shoot();
                 loaded = false;

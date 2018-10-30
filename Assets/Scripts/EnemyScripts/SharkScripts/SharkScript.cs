@@ -80,7 +80,7 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 5f);
+            shark.Attack(player, gameObject, terrain, 2f);
             if (debugMode)
                 print("attacking");
         }

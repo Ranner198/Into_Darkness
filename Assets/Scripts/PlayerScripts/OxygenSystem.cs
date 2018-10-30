@@ -52,6 +52,6 @@ public class OxygenSystem : MonoBehaviour {
 
     void SetOxygenText()
     {
-        oxygenText.text = "Oxygen: " + System.Math.Round(PlayerMovement.player.GetOxygenLevel(), 2) + "%";
+        //oxygenText.text = "Oxygen: " + System.Math.Round(PlayerMovement.player.GetOxygenLevel(), 2) + "%";
     }
 }

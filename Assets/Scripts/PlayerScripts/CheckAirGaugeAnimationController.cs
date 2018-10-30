@@ -14,10 +14,10 @@ public class CheckAirGaugeAnimationController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {        
+	void Update () {
         if (!SpearGun.shootState)
-        {
-            if (Input.GetKey(KeyCode.Space))
+        {            
+            if (Input.GetButton("Jump"))
             {
                 anim.Play("CheckGauge");
                 if (frameCount < 1)
