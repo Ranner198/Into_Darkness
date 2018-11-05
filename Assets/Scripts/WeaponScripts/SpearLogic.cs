@@ -21,7 +21,7 @@ public class SpearLogic : MonoBehaviour {
 
     void Update()
     {
-        //rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * -7 * Time.deltaTime, rb.velocity.z);
+        rb.AddForce(0, -3 * Time.deltaTime * 30, 0);
 
         if (despawnTimer >= 0 && !stuck)
             despawnTimer -= Time.deltaTime;
