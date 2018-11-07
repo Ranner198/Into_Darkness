@@ -8,6 +8,7 @@ public class ButtonGoTo : MonoBehaviour {
     public GameObject UIElements; 
 
 	void Update () {
-        UIElements.transform.position = transform.position;        
+        UIElements.transform.position = transform.position;
+        UIElements.transform.rotation = transform.rotation;
 	}
 }
