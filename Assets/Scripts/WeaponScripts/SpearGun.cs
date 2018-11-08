@@ -6,9 +6,10 @@ public class SpearGun : MonoBehaviour {
 
     //public Animator anim;
     public static bool shootState = false;
-    public int ammo = 5, maxAmmo = 20;
+    public int ammo = 5, maxAmmo = 10;
+    public GameObject AmmoImageHolder;
+    public Image[] AmmoImages;
     public GameObject spear;
-    public Text ammoText;
     public GameObject prefabObject;
     public GameObject spawnPoint;
     public GameObject helment;
@@ -27,6 +28,12 @@ public class SpearGun : MonoBehaviour {
     {
         anim = GetComponent<Animator>();
         PlayerMovement.player.SetAmmo(ammo);
+
+        //Load in images
+        for (int i = 0; i > maxAmmo; i++)
+        {
+            AmmoImages[i] = AmmoImageHolder.GetComponent<Image>();
+        }
     }
 
     void Update () {
@@ -39,7 +46,7 @@ public class SpearGun : MonoBehaviour {
         //If airguage isn't pulled up allow transition to shooting state
         if (!CheckAirGaugeAnimationController.checkAirGuage)
         {
-
+            //Raise Arm
             if (Input.GetButton("Fire2") && VRCoolDown < 0 && !shootState)
             {
                 VRCoolDown = 2;
@@ -48,6 +55,7 @@ public class SpearGun : MonoBehaviour {
                     shootState = true;
                 return;
             }
+            //Lower Arm
             else if (Input.GetButton("Fire2") && VRCoolDown < 0 && shootState)
             {
                 VRCoolDown = 2;
@@ -112,15 +120,23 @@ public class SpearGun : MonoBehaviour {
         PlayerMovement.player.AddAmmo(-1); 
     }
 
-    void DisplayAmmo ()
+    void DisplayAmmo()
     {
-        ammoText.text = "Ammo: " + PlayerMovement.player.GetAmmo();
+        for (int i = maxAmmo-1; i > PlayerMovement.player.GetAmmo()-1; i--)
+        {
+            AmmoImages[i].enabled = false;
+        }
+
+        for (int i = 0; i < PlayerMovement.player.GetAmmo()-1; i++)
+        {
+            AmmoImages[i].enabled = true;
+        }
     }
 
     public IEnumerator Reload()
     {
         isReloading = true;
-        yield return new WaitForSeconds(Random.Range(5, 8));
+        yield return new WaitForSeconds(1.75f);
         //anim.Play("Shoot");
         loaded = true;
         shot = false;
