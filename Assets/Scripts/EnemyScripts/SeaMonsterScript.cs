@@ -32,8 +32,8 @@ public class SeaMonsterScript : MonoBehaviour {
             monster.PassiveFix(player, gameObject, terrain, 55);
             if (debugMode)
                 print("Passive");
-            anim.SetFloat("Direction", -1);
-            anim.Play("Passive", -1, float.NegativeInfinity);
+            anim.SetFloat("Direction", 1);
+            anim.Play("Passive", 1, float.NegativeInfinity);
         }
     }
 }
