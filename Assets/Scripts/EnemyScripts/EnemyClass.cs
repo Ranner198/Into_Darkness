@@ -103,6 +103,10 @@ public class EnemyClass
         {
             currentState = "Retreat";
         }
+        else if (stateSystem == 4)
+        {
+            currentState = "Stationary";
+        }
     }
 
     //Debug set the state
@@ -153,7 +157,7 @@ public class EnemyClass
         return returnVal;
     }
     */
-    public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain, float speed)
+    public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain, float speed, LayerMask lm)
     {
         //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
         Rigidbody rb;
@@ -164,10 +168,11 @@ public class EnemyClass
         Debug.DrawRay(shark.transform.position, shark.transform.forward * 8, Color.red);
         //Add a Steer Controller
         RaycastHit hit;
-        bool hitStick = Physics.Raycast(shark.transform.position, shark.transform.forward, out hit, 8f);
+        bool hitStick = Physics.Raycast(shark.transform.position, shark.transform.forward, out hit, 8f, lm);
 
         if (hitStick)
         {
+            Debug.Log(hit.collider.tag);
             if (hit.collider.tag == "Terrain")
                 steer = true;
         }
@@ -186,11 +191,98 @@ public class EnemyClass
         rb = shark.GetComponent<Rigidbody>();
         //rb.velocity = -1 * Vector3.forward * speed * Time.deltaTime * 10;
         rb.AddRelativeForce(speed * Vector3.forward * speed * Time.deltaTime);
-        
-        Debug.DrawRay(shark.transform.position, (shark.transform.forward * -1) * 7, Color.red);
+
+        Debug.DrawRay(shark.transform.position, shark.transform.forward * 8, Color.red);
         //Add a Steer Controller
         RaycastHit hit;
         bool hitStick = Physics.Raycast(shark.transform.position, shark.transform.forward, out hit, 8f);
+
+        if (hitStick)
+        {
+            if (hit.collider.tag == "Terrain")
+            {
+                steer = true;
+            }
+        }
+        else
+        {
+            stillHitting = 0;
+        }
+
+        if (steer)
+            Steer(shark);
+    }
+
+    public void Steer(GameObject shark) {
+        //If Passive
+        if (GetState() == 0)
+        {
+            stillHitting++;
+            if (!setSteer || stillHitting % 300 == 0)
+            {
+                setSteer = true;
+                setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);
+                setDegree += PassiveTurnDegree();
+            }
+            shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
+
+            if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
+                steer = false;
+        }
+        //If Retreating
+        if (GetState() == 3)
+        {
+            stillHitting++;
+            if (!setSteer || stillHitting % 300 == 0)
+            {
+                setSteer = true;
+                setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);
+                setDegree += RetreatTurnDegree();
+            }
+            shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
+
+            if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
+                steer = false;
+        }
+    }
+
+    public int PassiveTurnDegree() {
+        int degree = Random.Range(130, 230);
+        return degree;
+    }
+
+    public int RetreatTurnDegree() {
+        int degree = Random.Range(70, 130);
+        return degree;
+    }
+
+    //Retreat State Mode
+    public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed, float maxSpeed, LayerMask lm)
+    {
+        AttackDir = false;
+        dir = (shark.transform.GetDirection(PlayerPos)).normalized;
+        dir.y = 0;
+        Rigidbody rb;       
+        rb = shark.GetComponent<Rigidbody>();
+        if (rb.velocity.magnitude < maxSpeed)
+            rb.AddForce(-dir * speed * Time.deltaTime * 400);
+
+        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+
+        //rotate us over time according to speed until we are in the required rotation
+        Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
+
+        Vector3 inverse = -dir;
+
+        Quaternion lookRot = Quaternion.LookRotation(inverse * Mathf.Rad2Deg);
+        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
+
+        /*
+        //For Steering
+        Debug.DrawRay(shark.transform.position, (inverse) * 7, Color.red);
+        //Add a Steer Controller
+        RaycastHit hit;
+        bool hitStick = Physics.Raycast(shark.transform.position, inverse, out hit, 8f);
 
         if (hitStick)
         {
@@ -204,46 +296,7 @@ public class EnemyClass
 
         if (steer)
             Steer(shark);
-    }
-
-    public void Steer(GameObject shark) {
-        stillHitting++;
-        if (!setSteer || stillHitting % 300 == 0)
-        {
-            setSteer = true;
-            setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);
-            setDegree += TurnDegree();
-        }
-        shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
-
-        if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
-            steer = false;
-    }
-
-    public int TurnDegree() {
-        int degree = Random.Range(130, 230);
-        return degree;
-    }
-
-    //Retreat State Mode
-    public void Retreat(GameObject PlayerPos, GameObject shark, Terrain terrain, float rotateSpeed)
-    {
-
-        Vector3 dir = (shark.transform.GetDirection(PlayerPos));
-
-        Rigidbody rb;
-
-        rb = shark.GetComponent<Rigidbody>();
-
-        rb.AddForce(-dir * speed * Time.deltaTime * 1200);
-
-        //rotate us over time according to speed until we are in the required rotation
-        Vector3 HeadPos = new Vector3(PlayerPos.transform.position.x, PlayerPos.transform.position.y + 1.25f, PlayerPos.transform.position.z);
-
-        Vector3 inverse = -dir;
-
-        Quaternion lookRot = Quaternion.LookRotation(inverse * Mathf.Rad2Deg);
-        shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
+        */
     }
 
     //Attack State
@@ -252,7 +305,7 @@ public class EnemyClass
         //Get the attack direction
         if (!AttackDir)
         {
-            dir = shark.transform.GetDirection(PlayerPos);
+            dir = shark.transform.GetDirection(PlayerPos).normalized;
             dir.y += .025f;
             AttackDir = true;
         }
@@ -268,6 +321,16 @@ public class EnemyClass
         shark.transform.rotation = Quaternion.Slerp(shark.transform.rotation, lookRot, Time.deltaTime * 3);
 
         rb.velocity = (dir * speed * Time.deltaTime * attackSpeed * 15);
+    }
+    public void Stationary(GameObject shark) {
+
+        Rigidbody rb;
+
+        rb = shark.GetComponent<Rigidbody>();
+
+        if (rb.velocity.z > 1)
+            rb.velocity -= new Vector3(0, -1, 0);
+
     }
 
     public void Circle(GameObject[] CircleArea, GameObject Player, GameObject shark, Terrain terrain, float rotateSpeed)

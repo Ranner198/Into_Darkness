@@ -12,6 +12,8 @@ public class FishAI : MonoBehaviour {
     public float speed;
     public bool runAway;
 
+    public LayerMask lm;
+
 	void Start () {
         fish.SetSpeed(speed);
         player = GameObject.FindGameObjectWithTag("Player").transform.GetChild(2).gameObject;
@@ -20,9 +22,9 @@ public class FishAI : MonoBehaviour {
 	
 	void Update () {
         if (runAway)
-            fish.Retreat(player, gameObject, terrain, 10f);
+            fish.Retreat(player, gameObject, terrain, 10f, 8f, lm);
         else
-            fish.Passive(player, gameObject, terrain, speed);
+            fish.Passive(player, gameObject, terrain, speed, lm);
         
 
         if (transform.GetDistance(player) < 10)

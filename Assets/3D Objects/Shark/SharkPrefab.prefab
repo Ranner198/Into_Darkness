@@ -3529,6 +3529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40698f971e62b7e4ea1bada8cdef60da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugMode: 0
 --- !u!114 &114039520010076260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3562,9 +3563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ca6edddf478f3499ecc20ac095f471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sound:
-  - {fileID: 8300000, guid: 9ce427d13fe97964499de8e369025f9a, type: 3}
-  - {fileID: 8300000, guid: 07145de6d6bf230489286f3c8fd82f64, type: 3}
+  Sound: {fileID: 0}
   audioSource: {fileID: 82945741049951104}
 --- !u!137 &137978770319593610
 SkinnedMeshRenderer:

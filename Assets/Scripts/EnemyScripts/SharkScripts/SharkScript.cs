@@ -15,7 +15,10 @@ public class SharkScript : MonoBehaviour
 
     public Transform targetPoints;
 
+    public float maxSpeed = 15;
+
     private bool startingCircle = false;
+    private float timer;
 
     private Animator anim;
 
@@ -26,8 +29,11 @@ public class SharkScript : MonoBehaviour
 
     private Rigidbody rb;
 
+    public LayerMask lm;
+
     void Start()
     {
+        lm = ~lm;
         CircleArea = new GameObject[4];
 
         shark.SetState(0);
@@ -52,13 +58,14 @@ public class SharkScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    { 
+    void FixedUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, 27, transform.position.z);
         //transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
         if (shark.GetState() == 0)
         {
             //passive
-            shark.Passive(player, gameObject, terrain, 20);
+            shark.Passive(player, gameObject, terrain, 20, lm);
             if (debugMode)
                 print("passive");
             anim.Play("Passive");
@@ -80,7 +87,7 @@ public class SharkScript : MonoBehaviour
         else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            shark.Attack(player, gameObject, terrain, 2f);
+            shark.Attack(player, gameObject, terrain, 3.5f);
             if (debugMode)
                 print("attacking");
         }
@@ -89,9 +96,14 @@ public class SharkScript : MonoBehaviour
             //scared
             if (debugMode)
                 print("scared");
-            shark.Retreat(player, gameObject, terrain, 8f);
+
+            shark.Retreat(player, gameObject, terrain, 8f, maxSpeed/2, lm);
             //Retreat
             anim.Play("Retreat");
+        }
+        else if (shark.GetState() == 4)
+        {
+            shark.Stationary(gameObject);
         }
 
         if (transform.GetDistance(player) < 30 && shark.GetState() == 0)
@@ -104,6 +116,11 @@ public class SharkScript : MonoBehaviour
         {
             anim.Play("Attack");
             StartCoroutine(BiteAndRun());
+        }
+
+        if (transform.GetDistance(player) < 3 && shark.GetState() == 4)
+        {
+            shark.SetState(4);
         }
 
         //Count Down
@@ -131,6 +148,21 @@ public class SharkScript : MonoBehaviour
             }
         }
 
+        //Limiters
+        if (rb.velocity.x > maxSpeed)
+            rb.velocity = new Vector3(maxSpeed, rb.velocity.y, rb.velocity.z);
+        if (rb.velocity.x < -maxSpeed)
+            rb.velocity = new Vector3(-maxSpeed, rb.velocity.y, rb.velocity.z);
+        if (rb.velocity.y > maxSpeed)
+            rb.velocity = new Vector3(rb.velocity.x, maxSpeed, rb.velocity.z);
+        if (rb.velocity.y < -maxSpeed)
+            rb.velocity = new Vector3(rb.velocity.x, -maxSpeed, rb.velocity.z);
+        if (rb.velocity.z > maxSpeed)
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, maxSpeed);
+        if (rb.velocity.z < -maxSpeed)
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -maxSpeed);
+
+
         //if shark leaves bounds Delete it...
         if (Mathf.Abs(transform.position.x) > 200 || Mathf.Abs(transform.position.z) > 200)
         {
@@ -138,9 +170,10 @@ public class SharkScript : MonoBehaviour
         }
     }
 
+
     IEnumerator BiteAndRun() {
-        yield return new WaitForSeconds(1.15f);
-        shark.SetState(5);
+        yield return new WaitForSeconds(2f);
+        shark.SetState(4);
         anim.Play("Retreat");
         yield return new WaitForSeconds(.5f);
         decisionTime = false;
