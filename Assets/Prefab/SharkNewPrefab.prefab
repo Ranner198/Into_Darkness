@@ -2289,7 +2289,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433615537951728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3408,7 +3408,8 @@ AudioSource:
   m_GameObject: {fileID: 1799795689502150}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 58d0744dcad9cae48bb70af0ffa4b4c2,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 9ce427d13fe97964499de8e369025f9a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

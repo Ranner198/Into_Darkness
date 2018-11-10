@@ -3395,7 +3395,8 @@ AudioSource:
   m_GameObject: {fileID: 1119165497729996}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 58d0744dcad9cae48bb70af0ffa4b4c2,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3546,8 +3547,12 @@ MonoBehaviour:
   circleParent: {fileID: 0}
   CircleArea: []
   targetPoints: {fileID: 0}
+  maxSpeed: 15
   decisionTime: 0
   debugMode: 0
+  lm:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114604702714997170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3559,9 +3564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ca6edddf478f3499ecc20ac095f471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sound:
-  - {fileID: 8300000, guid: 9ce427d13fe97964499de8e369025f9a, type: 3}
-  - {fileID: 8300000, guid: 07145de6d6bf230489286f3c8fd82f64, type: 3}
+  Sound: {fileID: 0}
   audioSource: {fileID: 82008234803416870}
 --- !u!114 &114932005268640244
 MonoBehaviour:
