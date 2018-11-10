@@ -2849,7 +2849,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4486064416373596, guid: b960d915c1f0a4317984ceea07a413e4, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1327512426167980, guid: b960d915c1f0a4317984ceea07a413e4, type: 2}
       propertyPath: m_IsActive
@@ -3856,7 +3856,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4549464061756498, guid: 22c8427e2bad10a4285c0949f67f0d9c, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 65233832972525990, guid: 22c8427e2bad10a4285c0949f67f0d9c,
         type: 2}
@@ -10775,6 +10775,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &1653169852
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1653169845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8fa05c0ebc4eb064b9aa04bae1e91c38, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8fa784acf3328e540a1c0de4df92aea4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1659927165
 GameObject:
   m_ObjectHideFlags: 0
@@ -11817,15 +11835,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4134126980181518, guid: 5ff3cb0ee079e72469d62ddd4e76b0fe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 37.87375
+      value: 36.1
       objectReference: {fileID: 0}
     - target: {fileID: 4134126980181518, guid: 5ff3cb0ee079e72469d62ddd4e76b0fe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 34.8
+      value: 29.2
       objectReference: {fileID: 0}
     - target: {fileID: 4134126980181518, guid: 5ff3cb0ee079e72469d62ddd4e76b0fe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -40.012474
+      value: -73.4
       objectReference: {fileID: 0}
     - target: {fileID: 4134126980181518, guid: 5ff3cb0ee079e72469d62ddd4e76b0fe, type: 2}
       propertyPath: m_LocalRotation.x
