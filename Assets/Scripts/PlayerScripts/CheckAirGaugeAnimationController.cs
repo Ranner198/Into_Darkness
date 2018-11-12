@@ -17,7 +17,7 @@ public class CheckAirGaugeAnimationController : MonoBehaviour {
 	void Update () {
         if (!SpearGun.shootState)
         {            
-            if (Input.GetButton("Jump"))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 anim.Play("CheckGauge");
                 if (frameCount < 1)
