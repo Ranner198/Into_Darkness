@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     public static PlayerClass player = new PlayerClass(1.0f, 100, 3);
     public float _speed = 3.0f, jumpForce = 6.0f, gravity = 5.0f, raycastLength = 3f;
     public LayerMask lm;
     private Rigidbody rb;
     private Vector3 movement = Vector3.zero;
-    private bool jump = false; 
+    private bool jump = false;
     private float speed = 0;
 
-	void Start () {
+    void Start()
+    {
         player.SetSpeed(speed);
         rb = GetComponent<Rigidbody>();
         lm = ~lm;
         speed = _speed;
-	}
+    }
 
     public void Update()
     {
@@ -33,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         //Speed Holder for adjusting speed upon different conditions
-        var speedHolder = _speed/4;
+        var speedHolder = _speed / 4;
 
         //Raycast to ground
         RaycastHit hit;
@@ -59,9 +61,12 @@ public class PlayerMovement : MonoBehaviour {
             movement *= Time.deltaTime;
             movement = transform.TransformDirection(movement);
             rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
-        } else {
+        }
+        else
+        {
             //If not grounded pull towards ground
             rb.AddForce(0, -gravity * Time.deltaTime * 60, 0);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
         }
 
         //If the spear gun is out slow down player speed
@@ -71,6 +76,7 @@ public class PlayerMovement : MonoBehaviour {
             speed = _speed - speedHolder;
 
         //Add force if player is airborn
-        rb.AddForce(movement);
+        if (rb.velocity.magnitude < 10)
+            rb.AddRelativeForce(movement / 300);
     }
 }
