@@ -31985,7 +31985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrain: {fileID: 1180252740}
   spawnPositions: []
-  sub: {fileID: 1190284300667014, guid: be29b17e151c11a4796d46ccd2db1b93, type: 2}
+  sub: {fileID: 1190284300667014, guid: 8afd5108334a1c44e8539fa5390778ee, type: 2}
   heightOffset: 3
 --- !u!1 &613462142
 GameObject:
@@ -33425,6 +33425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePaused: 0
   pauseMenuScreen: {fileID: 1112804505}
+  optionsMenuScreen: {fileID: 0}
 --- !u!1 &819763639
 GameObject:
   m_ObjectHideFlags: 0
@@ -51556,8 +51557,8 @@ MonoBehaviour:
   - {fileID: 2017645593}
   - {fileID: 117468639}
   - {fileID: 44639254}
-  spear: {fileID: 1613644729788886, guid: 9a645279bdecf0c40ac9434867579057, type: 2}
-  prefabObject: {fileID: 1613644729788886, guid: 9a645279bdecf0c40ac9434867579057,
+  spear: {fileID: 1613644729788886, guid: d5990ab2159642e4f8040746bc9fc5cd, type: 2}
+  prefabObject: {fileID: 1613644729788886, guid: d5990ab2159642e4f8040746bc9fc5cd,
     type: 2}
   spawnPoint: {fileID: 330310215}
   helment: {fileID: 1572701973}
