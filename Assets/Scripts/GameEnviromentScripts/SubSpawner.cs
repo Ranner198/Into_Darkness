@@ -26,6 +26,7 @@ public class SubSpawner : MonoBehaviour {
         float height = terrain.SampleHeight(spawnPositions[index].transform.position);
         Vector3 spawnLocation = new Vector3(spawnPositions[index].transform.position.x, height + heightOffset, spawnPositions[index].transform.position.z);
         GameObject Sub = Instantiate(sub, spawnLocation, Quaternion.identity);
+        Sub.transform.rotation = Quaternion.Euler(-12, 11, -14);
         Sub.name = "Sub";
         Sub.tag = "Sub";
 
