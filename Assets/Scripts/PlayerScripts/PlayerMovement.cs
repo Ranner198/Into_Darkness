@@ -51,10 +51,10 @@ public class PlayerMovement : MonoBehaviour
                 speedHolder = 0;
 
                 //If the player jumps 'Space'
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, jumpForce * Time.deltaTime * 60, rb.velocity.z);
-                }
+                //if (Input.GetKeyDown(KeyCode.Space))
+                //{
+                //    rb.velocity = new Vector3(rb.velocity.x, jumpForce * Time.deltaTime * 60, rb.velocity.z);
+                //}
             }
 
             //If the player is grounded the speed will be full speed

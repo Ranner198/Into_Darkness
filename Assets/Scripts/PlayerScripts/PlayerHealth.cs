@@ -94,5 +94,13 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(10);
             print(coll);
         }
+
+        if (coll.gameObject.tag == "SeaMonster")
+        {
+            sharkTimer = 1;
+            TakeDamage(50);
+            print(coll);
+        }
+
     }
 }

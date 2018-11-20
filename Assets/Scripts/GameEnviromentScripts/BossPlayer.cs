@@ -10,12 +10,16 @@ public class BossPlayer : MonoBehaviour
     public GameObject seaMonsterPrefab;
     public GameObject playerLocation;
     public GameObject bossLocation;
+    public GameObject bossSpawner;
+
+    private GameObject[] enemies;
     public float timer = 5;
     bool timerBegin;
 
     void Start()
     {
         videoPlayer.SetActive(false);
+        bossSpawner.SetActive(false);
         timerBegin = false;
     }
 
@@ -32,6 +36,8 @@ public class BossPlayer : MonoBehaviour
                 seaMonster.name = "SeaMonster";
                 seaMonster.tag = "SeaMonster";
                 timerBegin = false;
+                bossSpawner.SetActive(true);
+                DestroyAllEnemies();
             }
         }
     }
@@ -43,6 +49,16 @@ public class BossPlayer : MonoBehaviour
             timerBegin = true;
             videoPlayer.SetActive(true);
             Destroy(videoPlayer, timer);
+        }
+    }
+
+    void DestroyAllEnemies()
+    {
+        enemies = GameObject.FindGameObjectsWithTag("Shark");
+
+        for (var i = 0; i < enemies.Length; i++)
+        {
+            Destroy(enemies[i]);
         }
     }
 }

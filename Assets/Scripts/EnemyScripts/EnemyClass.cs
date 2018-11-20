@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyClass
 {
 
-    private int health, damage, stateSystem, nextPos = 0, aggro, setDegree = 0, stillHitting = 0;
+    private int health, damage, stateSystem, nextPos = 0, aggro, setDegree = 0, stillHitting = 0, counter;
     private float speed, timer;
     private bool dead, CircleMode = false, AttackDir = false, setSteer = false, steer = false;
+    public GameObject bossStage;
     public string currentState;
 
     //Attack Point
@@ -240,10 +241,17 @@ public class EnemyClass
                 setDegree += RetreatTurnDegree();
             }
             shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
-
+            
             if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
                 steer = false;
         }
+
+        Debug.Log("I GOT HIT");
+
+        //if (bossStage.activeInHierarchy == true)
+        //{
+        //    counter++;
+        //}
     }
 
     public int PassiveTurnDegree() {

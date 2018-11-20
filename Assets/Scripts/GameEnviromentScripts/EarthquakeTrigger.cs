@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EarthquakeTrigger : MonoBehaviour
 {
-
-    float timer = 10;
-    bool timerCheck = false;
-
+    private float timer = 10;
+    private bool timerCheck = false;
     private bool isPlaying = false;
+
     public AudioClip earthquakeSound;
-    AudioSource audioSource;
+    public GameObject videoPlayer;
+    public AudioSource audioSource;
 
     private void Start()
     {
+        videoPlayer.SetActive(false);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -54,9 +56,15 @@ public class EarthquakeTrigger : MonoBehaviour
 
             if (timer <= 0)
             {
-                PlayerHealth health = other.GetComponent<PlayerHealth>();
-                health.Death();
+                videoPlayer.SetActive(true);
+                Destroy(videoPlayer, 5);
+                Invoke("Death", 5f);
             }
         }
+    }
+
+    private void Death()
+    {
+        SceneManager.LoadScene("Game_Over_Scene");
     }
 }

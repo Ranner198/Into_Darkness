@@ -36,7 +36,7 @@ public class SeaMonsterScript : MonoBehaviour
         lm = ~lm;
         CircleArea = new GameObject[4];
 
-        monster.SetState(0);
+        monster.SetState(2);
         monster.GenerateAggro();
 
         anim = GetComponent<Animator>();
@@ -61,7 +61,6 @@ public class SeaMonsterScript : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x, 27, transform.position.z);
-        //transform.position = monster.StayOnTopOfTerrain(terrain, gameObject);
         if (monster.GetState() == 0)
         {
             //passive
@@ -106,46 +105,10 @@ public class SeaMonsterScript : MonoBehaviour
             monster.Stationary(gameObject);
         }
 
-        if (transform.GetDistance(player) < 30 && monster.GetState() == 0)
-        {
-            //Start The Circle State
-            monster.SetState(2);
-        }
-
-        if (transform.GetDistance(player) < 25 && monster.GetState() == 2)
+        if (monster.GetState() == 2)
         {
             anim.Play("Attack");
             StartCoroutine(BiteAndRun());
-        }
-
-        if (transform.GetDistance(player) < 3 && monster.GetState() == 4)
-        {
-            monster.SetState(4);
-        }
-
-        //Count Down
-        if (monster.GetTimer() >= 0)
-            monster.CountDown();
-
-        //make a choice of wheather or not to attack
-        if (monster.GetTimer() <= 0 && decisionTime)
-        {
-            lastState = monster.GetState();
-            decisionTime = false;
-            var aggro = monster.GetAggro();
-
-            if (aggro >= 50)
-            {
-                monster.SetState(2);
-            }
-            else if (aggro < 50 && aggro > 25)
-            {
-                monster.SetState(0);
-            }
-            else if (aggro <= 25)
-            {
-                monster.SetState(3);
-            }
         }
 
         //Limiters

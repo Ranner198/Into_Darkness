@@ -206,3 +206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   earthquakeSound: {fileID: 8300000, guid: f713edb9d506f804a959918545acac9d, type: 3}
+  videoPlayer: {fileID: 1348025255115108, guid: c3bb31fb65339284c90d03023019075b,
+    type: 2}
+  audioSource: {fileID: 0}
