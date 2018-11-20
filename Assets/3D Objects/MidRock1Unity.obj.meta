@@ -1,51 +1,22 @@
 fileFormatVersion: 2
-guid: a39918f31b99d4e78925aed33083dc57
+guid: 47bdb0c222259e642963222ce20bc142
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: R_Elbow1
-    100004: R_Fingers1
-    100006: R_Fingers2
-    100008: R_Fingers3
-    100010: R_Forearm
-    100012: R_Index1
-    100014: R_Index2
-    100016: R_Index3
-    100018: R_Shoulder1
-    100020: R_Thumb1
-    100022: R_Thumb2
-    100024: R_Thumb3
-    100026: R_Upperarm
-    100028: R_Wrist1
-    100030: SpearArm
-    400000: //RootNode
-    400002: R_Elbow1
-    400004: R_Fingers1
-    400006: R_Fingers2
-    400008: R_Fingers3
-    400010: R_Forearm
-    400012: R_Index1
-    400014: R_Index2
-    400016: R_Index3
-    400018: R_Shoulder1
-    400020: R_Thumb1
-    400022: R_Thumb2
-    400024: R_Thumb3
-    400026: R_Upperarm
-    400028: R_Wrist1
-    400030: SpearArm
-    2100000: Arm
-    4300000: SpearArm
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: SpearArm
+    100000: bolder3_bolderGroup1
+    100002: //RootNode
+    400000: bolder3_bolderGroup1
+    400002: //RootNode
+    2100000: bolder3_bolderGroup1Mat
+    2300000: bolder3_bolderGroup1
+    3300000: bolder3_bolderGroup1
+    4300000: bolder3_bolderGroup1
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Arm
-    second: {fileID: 2100000, guid: 2d633c5cedf2d2f40a0ff15c066a2c27, type: 2}
+      name: bolder3_bolderGroup1Mat
+    second: {fileID: 2100000, guid: b15e8ce2d7f556d478942c599315cd03, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -96,8 +67,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -122,7 +93,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

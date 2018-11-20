@@ -41,7 +41,12 @@ ModelImporter:
     7400002: CheckGaugen't
     9500000: //RootNode
     13700000: pPipe3
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 3cdbb100506563a49b9cc9f321fb639c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

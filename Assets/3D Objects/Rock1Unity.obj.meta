@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: 257c6126574c34472a949824f6056d72
+guid: af63037e576125d42acab2976863e601
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Helmet
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: polySurface1
-  externalObjects: {}
+    100000: bolder1_bolderGroup3
+    100002: //RootNode
+    400000: bolder1_bolderGroup3
+    400002: //RootNode
+    2100000: bolder1_bolderGroup3Mat
+    2300000: bolder1_bolderGroup3
+    3300000: bolder1_bolderGroup3
+    4300000: bolder1_bolderGroup3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bolder1_bolderGroup3Mat
+    second: {fileID: 2100000, guid: f9770c9d53a511f4eb6d5cd3379bc1ba, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

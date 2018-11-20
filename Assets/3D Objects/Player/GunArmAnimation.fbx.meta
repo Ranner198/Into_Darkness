@@ -41,7 +41,12 @@ ModelImporter:
     7400002: Shootn't
     9500000: //RootNode
     13700000: SpearArm
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 79d30e9c8294b9d498aca0c87a106f59, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
