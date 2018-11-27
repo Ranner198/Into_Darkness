@@ -83186,8 +83186,8 @@ MonoBehaviour:
   - {fileID: 1487262138637788, guid: 547fece6b2d3b0243bcc51d224fcd6f8, type: 2}
   - {fileID: 1327512426167980, guid: b960d915c1f0a4317984ceea07a413e4, type: 2}
   Locations: []
-  spawnPercentage: 50
-  objectSpawnRate: 32000000280000000a000000
+  spawnPercentage: 85
+  objectSpawnRate: 320000001900000019000000
 --- !u!1 &2001366040
 GameObject:
   m_ObjectHideFlags: 0

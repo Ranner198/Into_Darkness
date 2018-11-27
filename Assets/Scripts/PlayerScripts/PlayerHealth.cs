@@ -91,7 +91,7 @@ public class PlayerHealth : MonoBehaviour
         if (coll.gameObject.tag == "Shark" && sharkTimer < 0)
         {
             sharkTimer = 1;
-            TakeDamage(10);
+            TakeDamage(20);
             print(coll);
         }
 
