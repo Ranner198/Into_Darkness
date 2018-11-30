@@ -12,6 +12,7 @@ TagManager:
   - Pickups
   - EarthquakeZone
   - SeaMonster
+  - Mouse
   layers:
   - Default
   - TransparentFX

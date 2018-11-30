@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //If the spear gun is out slow down player speed
-        if (SpearGun.shootState)
+        if (SpearGun.shootState || CheckAirGaugeAnimationController.checkAirGuage)
             speed = _speed / 2 - speedHolder;
         else
             speed = _speed - speedHolder;

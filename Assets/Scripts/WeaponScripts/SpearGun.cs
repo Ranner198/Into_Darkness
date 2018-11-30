@@ -44,27 +44,25 @@ public class SpearGun : MonoBehaviour {
         //Show Ammo Left
         DisplayAmmo();
         //If airguage isn't pulled up allow transition to shooting state
-        if (!CheckAirGaugeAnimationController.checkAirGuage)
+        //Raise Arm
+        if (Input.GetButton("Fire2") && VRCoolDown < 0 && !shootState)
         {
-            //Raise Arm
-            if (Input.GetButton("Fire2") && VRCoolDown < 0 && !shootState)
-            {
-                VRCoolDown = 2;
-                print("Working");
-                if (!isReloading)
-                    shootState = true;
-                return;
-            }
-            //Lower Arm
-            else if (Input.GetButton("Fire2") && VRCoolDown < 0 && shootState)
-            {
-                VRCoolDown = 2;
-                print("Working");
-                if (!isReloading)
-                    shootState = false;
-                return;
-            }
+            VRCoolDown = 2;
+            print("Working");
+            if (!isReloading)
+                shootState = true;
+            return;
         }
+        //Lower Arm
+        else if (Input.GetButton("Fire2") && VRCoolDown < 0 && shootState)
+        {
+            VRCoolDown = 2;
+            print("Working");
+            if (!isReloading)
+                shootState = false;
+            return;
+        }
+        
 
         if (VRCoolDown >= 0)
             VRCoolDown -= Time.deltaTime;

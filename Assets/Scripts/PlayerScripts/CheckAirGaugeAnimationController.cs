@@ -15,31 +15,30 @@ public class CheckAirGaugeAnimationController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!SpearGun.shootState)
-        {            
-            if (Input.GetKey(KeyCode.Space))
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            anim.Play("CheckGauge");
+            if (frameCount < 1)
+            {                    
+                frameCount += Time.deltaTime/2;
+            }
+            checkAirGuage = true;
+        }
+        else
+        {
+            if (frameCount > 0)
             {
-                anim.Play("CheckGauge");
-                if (frameCount < 1)
-                {                    
-                    frameCount += Time.deltaTime/2;
-                }
-                checkAirGuage = true;
+                anim.SetFloat("Direction", -1);
+                anim.Play("CheckGauge", 0, frameCount);
+                frameCount -= Time.deltaTime/2;
             }
             else
             {
-                if (frameCount > 0)
-                {
-                    anim.SetFloat("Direction", -1);
-                    anim.Play("CheckGauge", 0, frameCount);
-                    frameCount -= Time.deltaTime/2;
-                }
-                else
-                {
-                    checkAirGuage = false;
-                    anim.Play("CheckGaugen't");
-                }
+                checkAirGuage = false;
+                anim.Play("CheckGaugen't");
             }
         }
+        
     }
 }

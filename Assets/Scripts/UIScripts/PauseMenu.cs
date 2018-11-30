@@ -26,6 +26,11 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
 
+            if (gamePaused)
+                Cursor.visible = true;
+            else
+                Cursor.visible = false;
+
         }
     }
 
