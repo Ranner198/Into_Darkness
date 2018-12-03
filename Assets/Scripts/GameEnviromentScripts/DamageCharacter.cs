@@ -10,9 +10,14 @@ public class DamageCharacter : MonoBehaviour {
 
     CameraShake cameraShakeScript;
 
+    public AudioClip earthquakeSound;
+    public AudioSource audioSource;
+
     void Start() {
         Player = GameObject.FindGameObjectWithTag("Player");
         cameraShakeScript = Player.transform.GetChild(2).GetComponent<CameraShake>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider coll)
@@ -21,6 +26,7 @@ public class DamageCharacter : MonoBehaviour {
         {
             PlayerMovement.player.TakeDamage(5);
             cameraShakeScript.shakecamera();
+            audioSource.PlayOneShot(earthquakeSound, 1f);
         }
         time = 0;
     }
@@ -32,9 +38,12 @@ public class DamageCharacter : MonoBehaviour {
         {
             time++;
             cameraShakeScript.shakecamera();
+
+            audioSource.PlayOneShot(earthquakeSound, 1f);
             if (time % 20 == 0)
             {
-                PlayerMovement.player.TakeDamage(5);
+                PlayerHealth health = coll.GetComponent<PlayerHealth>();
+                health.TakeDamage(5);
             }
         }
     }

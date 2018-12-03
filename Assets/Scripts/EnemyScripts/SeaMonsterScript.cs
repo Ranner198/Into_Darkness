@@ -136,7 +136,7 @@ public class SeaMonsterScript : MonoBehaviour
 
     IEnumerator BiteAndRun()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         monster.SetState(4);
         anim.Play("Retreat");
         yield return new WaitForSeconds(.5f);

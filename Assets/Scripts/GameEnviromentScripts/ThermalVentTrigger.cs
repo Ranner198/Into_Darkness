@@ -52,7 +52,7 @@ public class ThermalVentTrigger : MonoBehaviour
             {
                 PlayerHealth health = other.GetComponent<PlayerHealth>();
                 health.TakeDamage(5);
-                timer = 0.2;
+                timer = 1;
             }
         }
     }

@@ -239,14 +239,13 @@ public class EnemyClass
                 setSteer = true;
                 setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);
                 setDegree += RetreatTurnDegree();
+                Debug.Log("I GOT FUCKING HIT");
             }
             shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
             
             if (shark.transform.rotation.y < setDegree - 3 && shark.transform.rotation.y > setDegree + 3)
                 steer = false;
         }
-
-        Debug.Log("I GOT HIT");
 
         //if (bossStage.activeInHierarchy == true)
         //{

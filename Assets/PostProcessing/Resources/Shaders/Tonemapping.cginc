@@ -8,7 +8,9 @@
 #define TONEMAPPING_USE_FULL_ACES 0
 
 //
-// Neutral tonemapping (Hable/Hejl/Frostbite)
+// Neutral tonemapping (Hable/Hejl/Frost
+
+)
 // Input is linear RGB
 //
 half3 NeutralCurve(half3 x, half a, half b, half c, half d, half e, half f)

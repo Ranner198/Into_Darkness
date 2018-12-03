@@ -15,9 +15,4 @@ public class ButtonEditor : MonoBehaviour {
         Application.Quit();
     }
 
-    void Update()
-    {
-        if (Input.GetButton("Jump") || Input.GetButton("Fire2"))
-            SceneManager.LoadScene("Game_Scene");
-    }
 }

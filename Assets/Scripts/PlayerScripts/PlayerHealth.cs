@@ -29,6 +29,10 @@ public class PlayerHealth : MonoBehaviour
         //set starting health of 100
         PlayerMovement.player.SetHealth(startingHealth);
         SetHealthText();
+
+        Color Transparent = new Color(1, 1, 1, 0);
+        damageImage.color = Color.Lerp(damageImage.color, Transparent, 20 * Time.deltaTime);
+
     }
 
     void Update()
@@ -39,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Color Opaque = new Color(1, 1, 1, 1);
             damageImage.color = Color.Lerp(damageImage.color, Opaque, 20 * Time.deltaTime);
+
             if (damageImage.color.a >= 0.8) //Almost Opaque, close enough
             {
                 damaged = false;

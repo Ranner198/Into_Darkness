@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EarthquakeTrigger : MonoBehaviour
 {
-    private float timer = 10;
+    private float timer = 7;
+    private float loadTimer = 12;
     private bool timerCheck = false;
     private bool isPlaying = false;
 
@@ -24,6 +25,7 @@ public class EarthquakeTrigger : MonoBehaviour
         if (timerCheck)
         {
             timer -= Time.deltaTime;
+            loadTimer -= Time.deltaTime;
         }
     }
 
@@ -32,7 +34,7 @@ public class EarthquakeTrigger : MonoBehaviour
         if (other.name == "Player")
         {
             timerCheck = true;
-            audioSource.PlayOneShot(earthquakeSound, 1f);
+            audioSource.PlayOneShot(earthquakeSound, 2f);
         }
     }
 
@@ -40,7 +42,7 @@ public class EarthquakeTrigger : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            timer = 10;
+            timer = 7;
             timerCheck = false;
             Destroy(gameObject);
             isPlaying = false;
@@ -58,13 +60,12 @@ public class EarthquakeTrigger : MonoBehaviour
             {
                 videoPlayer.SetActive(true);
                 Destroy(videoPlayer, 5);
-                Invoke("Death", 5f);
+                
+                if (loadTimer <= 0)
+                {
+                    SceneManager.LoadScene("Game_Over_Scene");
+                }
             }
         }
-    }
-
-    private void Death()
-    {
-        SceneManager.LoadScene("Game_Over_Scene");
     }
 }
