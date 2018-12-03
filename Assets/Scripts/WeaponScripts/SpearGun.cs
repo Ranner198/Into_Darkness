@@ -24,6 +24,10 @@ public class SpearGun : MonoBehaviour {
 
     private float VRCoolDown = 0;
 
+    public AudioClip reloadSound;
+    public AudioClip shootSound;
+    public AudioSource audioSource;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -83,11 +87,13 @@ public class SpearGun : MonoBehaviour {
                 Shoot();
                 loaded = false;
                 shootState = false;
+                audioSource.PlayOneShot(shootSound, 2f);
             }
 
             if (!loaded && !isReloading)
             {
                 StartCoroutine(Reload());
+                audioSource.PlayOneShot(reloadSound, 2f);
             }
 
             if (Input.GetButtonDown("Fire1") && PlayerMovement.player.GetAmmo() <= 0)
