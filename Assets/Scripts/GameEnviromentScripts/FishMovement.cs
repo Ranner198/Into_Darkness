@@ -76,7 +76,7 @@ public class FishMovement : MonoBehaviour
         }
         else if (fish.GetState() == 2)
         {
-            //scared
+            fish.Passive(player, gameObject, terrain, 20, lm);
             if (debugMode)
                 print("scared");
             //Retreat
@@ -91,7 +91,7 @@ public class FishMovement : MonoBehaviour
         if (transform.GetDistance(player) < 25 && fish.GetState() == 2)
         {
             //anim.Play("Attack");
-            StartCoroutine(BiteAndRun());
+            fish.SetState(2);
         }
 
         //Count Down

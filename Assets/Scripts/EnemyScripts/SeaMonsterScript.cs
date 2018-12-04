@@ -133,10 +133,19 @@ public class SeaMonsterScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.tag == "Spear")
+        {
+            print(coll);
+            Debug.Log("I FUCKING HIT IT");
+        }
+    }
+
 
     IEnumerator BiteAndRun()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         monster.SetState(4);
         anim.Play("Retreat");
         yield return new WaitForSeconds(.5f);

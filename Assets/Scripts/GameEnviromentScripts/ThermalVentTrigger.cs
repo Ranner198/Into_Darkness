@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThermalVentTrigger : MonoBehaviour
 {
 
-    double timer = 0.2;
+    double timer = 1;
     bool timerCheck = false;
 
     public GameObject Player;

@@ -20,8 +20,11 @@ public class BossSpawner : MonoBehaviour
             chooser = Random.Range(0, spawnPoints.Length);
 
             GameObject SeaMonster = Instantiate(boss, spawnPoints[chooser].transform.position, Quaternion.identity);
+
             SeaMonster.name = "SeaMonster";
             SeaMonster.tag = "SeaMonster";
+
+            Destroy(SeaMonster, 5);
 
             timer = 5;
         }

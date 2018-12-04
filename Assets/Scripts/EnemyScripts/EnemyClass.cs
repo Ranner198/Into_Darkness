@@ -142,22 +142,7 @@ public class EnemyClass
     {
         this.timer -= Time.deltaTime;
     }
-    /* //Retired
-    public Vector3 StayOnTopOfTerrain(Terrain terrain, GameObject shark) {
 
-        Vector3 sharkPos = shark.transform.position;
-
-        float heightMap = terrain.SampleHeight(sharkPos) + 50;
-
-        Vector3 returnVal = sharkPos;
-
-        if (sharkPos.y > heightMap) {
-            returnVal = Vector3.Slerp(shark.transform.position, new Vector3(shark.transform.position.x, heightMap, shark.transform.position.z), Time.deltaTime);
-        }
-
-        return returnVal;
-    }
-    */
     public void Passive(GameObject PlayerPos, GameObject shark, Terrain terrain, float speed, LayerMask lm)
     {
         //Put navmesh or something to control the shark whilst patroling to keep from crashing into terrain
@@ -239,7 +224,6 @@ public class EnemyClass
                 setSteer = true;
                 setDegree = Mathf.FloorToInt(shark.transform.eulerAngles.y);
                 setDegree += RetreatTurnDegree();
-                Debug.Log("I GOT FUCKING HIT");
             }
             shark.transform.rotation = Quaternion.Lerp(shark.transform.rotation, Quaternion.Euler(0, setDegree, 0), Time.deltaTime);
             

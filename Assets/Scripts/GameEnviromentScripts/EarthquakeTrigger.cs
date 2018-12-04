@@ -10,6 +10,8 @@ public class EarthquakeTrigger : MonoBehaviour
     private bool timerCheck = false;
     private bool isPlaying = false;
 
+    public GameObject warning;
+
     public AudioClip earthquakeSound;
     public GameObject videoPlayer;
     public AudioSource audioSource;
@@ -17,6 +19,7 @@ public class EarthquakeTrigger : MonoBehaviour
     private void Start()
     {
         videoPlayer.SetActive(false);
+        warning.SetActive(false);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -46,6 +49,7 @@ public class EarthquakeTrigger : MonoBehaviour
             timerCheck = false;
             Destroy(gameObject);
             isPlaying = false;
+            warning.SetActive(false);
         }
     }
 
@@ -55,6 +59,8 @@ public class EarthquakeTrigger : MonoBehaviour
         {
             CameraShake earthquake = other.GetComponent<CameraShake>();
             earthquake.shakecamera();
+
+            warning.SetActive(true);
 
             if (timer <= 0)
             {

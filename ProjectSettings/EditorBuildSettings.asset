@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BackupScenesFolder/GameOver.unity
     guid: 6b76d91a6ba92f24f9c621b107b9bbdb
   - enabled: 1
+    path: Assets/Scenes/SplashScreen.unity
+    guid: e184a32c908b4d848a4bd61409f6129f
+  - enabled: 1
     path: Assets/Scenes/3DSceneTesting.unity
     guid: 69ba9234a21f9d646bac6c4c2a2c3acb
   - enabled: 1
