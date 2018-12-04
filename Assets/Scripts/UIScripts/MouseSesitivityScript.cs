@@ -15,7 +15,7 @@ public class MouseSesitivityScript : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public void ChangeSensitivty(float val) {
