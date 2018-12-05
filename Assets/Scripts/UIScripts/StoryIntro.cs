@@ -11,9 +11,13 @@ public class StoryIntro : MonoBehaviour
 
     void Update()
     {
+        Time.timeScale = 0f;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             intro.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.visible = false;
         }
     }
 }

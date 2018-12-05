@@ -65,6 +65,7 @@ public class EarthquakeTrigger : MonoBehaviour
             if (timer <= 0)
             {
                 videoPlayer.SetActive(true);
+                warning.SetActive(false);
                 Destroy(videoPlayer, 5);
                 
                 if (loadTimer <= 0)

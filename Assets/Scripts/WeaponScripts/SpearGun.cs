@@ -6,7 +6,7 @@ public class SpearGun : MonoBehaviour {
 
     //public Animator anim;
     public static bool shootState = false;
-    public int ammo = 5, maxAmmo = 10;
+    public int ammo = 5, maxAmmo = 5;
     public GameObject AmmoImageHolder;
     public Image[] AmmoImages;
     public GameObject spear;
@@ -96,9 +96,10 @@ public class SpearGun : MonoBehaviour {
                 audioSource.PlayOneShot(reloadSound, 2f);
             }
 
-            if (Input.GetButtonDown("Fire1") && PlayerMovement.player.GetAmmo() <= 0)
+            if (PlayerMovement.player.GetAmmo() <= 0)
             {
-                //Add Dry Fire Sound
+                shootState = false;
+                anim.Play("Shootn't");
             }
         }
         else
@@ -108,6 +109,7 @@ public class SpearGun : MonoBehaviour {
                 anim.SetFloat("Direction", -1);
                 anim.Play("Shoot", 0, frameCount);
                 frameCount -= Time.deltaTime / 2;
+
             }
             else
               anim.Play("Shootn't");

@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public Image damageImage;
     public Text healthText;
     public AudioClip deathClip;
+    public AudioClip breathing;
     public float flashSpeed = 5f, sharkTimer = 1;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     bool damaged;
 
     public bool debugMode = false;
+    public float timer = 10;
 
     void Awake()
     {
@@ -38,6 +40,12 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         SetHealthText();
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            Breathe();
+        }
 
         if (damaged)
         {
@@ -71,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
 
         PlayerMovement.player.TakeDamage(damage);
 
-        //playerAudio.Play();
+        playerAudio.PlayOneShot(deathClip);
     }
 
 
@@ -79,8 +87,7 @@ public class PlayerHealth : MonoBehaviour
     {
         dead = true;
 
-        playerAudio.clip = deathClip;
-        //playerAudio.Play();
+        playerAudio.PlayOneShot(deathClip);
 
         playerMovement.enabled = false;
 
@@ -91,6 +98,7 @@ public class PlayerHealth : MonoBehaviour
     {
         healthText.text = "Health: " + PlayerMovement.player.GetHealth();
     }
+
     void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Shark" && sharkTimer < 0)
@@ -98,14 +106,16 @@ public class PlayerHealth : MonoBehaviour
             sharkTimer = 1;
             TakeDamage(20);
             print(coll);
+
+            if (coll.name == "SeaMonster")
+                TakeDamage(10);
         }
 
-        if (coll.gameObject.tag == "SeaMonster")
-        {
-            sharkTimer = 1;
-            TakeDamage(50);
-            print(coll);
-        }
+    }
 
+    void Breathe()
+    {
+        playerAudio.PlayOneShot(breathing, 3f);
+        timer = 10;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossSpawner : MonoBehaviour
 {
@@ -8,12 +9,14 @@ public class BossSpawner : MonoBehaviour
     public GameObject boss;
     public GameObject[] spawnPoints;
 
-    public float timer = 5;
+    public double timer = 7;
+    public double extraTimer = 35;
     public int chooser;
 
     void Update()
     {
         timer -= Time.deltaTime;
+        extraTimer -= Time.deltaTime;
 
         if (timer <= 0)
         {
@@ -22,11 +25,16 @@ public class BossSpawner : MonoBehaviour
             GameObject SeaMonster = Instantiate(boss, spawnPoints[chooser].transform.position, Quaternion.identity);
 
             SeaMonster.name = "SeaMonster";
-            SeaMonster.tag = "SeaMonster";
+            SeaMonster.tag = "Shark";
 
-            Destroy(SeaMonster, 5);
+            Destroy(SeaMonster, 7);
 
-            timer = 5;
+            timer = 7;
+        }
+
+        if (extraTimer <= 0)
+        {
+            SceneManager.LoadScene("Winning");
         }
         
     }

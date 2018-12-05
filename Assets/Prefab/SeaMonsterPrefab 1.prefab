@@ -306,16 +306,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289215880540522}
+  - component: {fileID: 54502470384650146}
+  - component: {fileID: 95042835260332636}
+  - component: {fileID: 114387145607206024}
+  - component: {fileID: 65255975733973718}
   - component: {fileID: 33207865344871654}
   - component: {fileID: 23126627077525228}
-  - component: {fileID: 65255975733973718}
-  - component: {fileID: 95042835260332636}
-  - component: {fileID: 54502470384650146}
   - component: {fileID: 65746715042518888}
-  - component: {fileID: 114387145607206024}
   m_Layer: 11
   m_Name: SeaMonsterPrefab 1
-  m_TagString: SeaMonster
+  m_TagString: Shark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

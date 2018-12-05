@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SplashScreen : MonoBehaviour {
 
-    public double timer = 5;
+    public float timer = 3;
 
 	void Update () {
 

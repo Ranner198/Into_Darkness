@@ -31,13 +31,14 @@ public class BossPlayer : MonoBehaviour
 
             if (timer <= 0)
             {
+                DestroyAllEnemies();
                 player.transform.position = playerLocation.transform.position;
                 GameObject seaMonster = Instantiate(seaMonsterPrefab, bossLocation.transform.position, Quaternion.identity);
                 seaMonster.name = "SeaMonster";
-                seaMonster.tag = "SeaMonster";
+                seaMonster.tag = "Shark";
+                Destroy(seaMonster, 7);
                 timerBegin = false;
                 bossSpawner.SetActive(true);
-                DestroyAllEnemies();
             }
         }
     }

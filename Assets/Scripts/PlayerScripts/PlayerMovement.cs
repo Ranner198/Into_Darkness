@@ -6,12 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public static PlayerClass player = new PlayerClass(1.0f, 100, 3);
-    public float _speed = 3.0f, jumpForce = 6.0f, gravity = 5.0f, raycastLength = 3f;
+    public float _speed = 6.0f, jumpForce = 6.0f, gravity = 5.0f, raycastLength = 3f;
     public LayerMask lm;
     private Rigidbody rb;
     private Vector3 movement = Vector3.zero;
     private bool jump = false;
-    private float speed = 0;
+    private float speed = 2;
 
     void Start()
     {

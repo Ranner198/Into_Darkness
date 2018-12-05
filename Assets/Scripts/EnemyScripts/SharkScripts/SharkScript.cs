@@ -106,13 +106,13 @@ public class SharkScript : MonoBehaviour
             shark.Stationary(gameObject);
         }
 
-        if (transform.GetDistance(player) < 30 && shark.GetState() == 0)
+        if (transform.GetDistance(player) < 45 && shark.GetState() == 0)
         {
             //Start The Circle State
             shark.SetState(2);
         }
 
-        if (transform.GetDistance(player) < 25 && shark.GetState() == 2)
+        if (transform.GetDistance(player) < 40 && shark.GetState() == 2)
         {
             anim.Play("Attack");
             StartCoroutine(BiteAndRun());
@@ -172,7 +172,7 @@ public class SharkScript : MonoBehaviour
 
 
     IEnumerator BiteAndRun() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         shark.SetState(4);
         anim.Play("Retreat");
         yield return new WaitForSeconds(.5f);

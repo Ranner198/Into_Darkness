@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SeaMonsterScript : MonoBehaviour
 {
-    public EnemyClass monster = new EnemyClass(12, 100);
+    public EnemyClass shark = new EnemyClass(12, 100);
 
     public GameObject player;
 
@@ -36,8 +36,8 @@ public class SeaMonsterScript : MonoBehaviour
         lm = ~lm;
         CircleArea = new GameObject[4];
 
-        monster.SetState(2);
-        monster.GenerateAggro();
+        shark.SetState(0);
+        shark.GenerateAggro();
 
         anim = GetComponent<Animator>();
 
@@ -61,21 +61,22 @@ public class SeaMonsterScript : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x, 27, transform.position.z);
-        if (monster.GetState() == 0)
+        //transform.position = shark.StayOnTopOfTerrain(terrain, gameObject);
+        if (shark.GetState() == 0)
         {
             //passive
-            monster.Passive(player, gameObject, terrain, 20, lm);
+            shark.Passive(player, gameObject, terrain, 20, lm);
             if (debugMode)
                 print("passive");
             anim.Play("Passive");
         }
-        else if (monster.GetState() == 1)
+        else if (shark.GetState() == 1)
         {
             //circleing
-            monster.Circle(CircleArea, player, gameObject, terrain, 1f);
+            shark.Circle(CircleArea, player, gameObject, terrain, 1f);
             if (decisionTime == false)
             {
-                monster.RandomTimer();
+                shark.RandomTimer();
                 decisionTime = true;
             }
             if (debugMode)
@@ -83,32 +84,68 @@ public class SeaMonsterScript : MonoBehaviour
             //Just keep swimming
             anim.Play("Passive");
         }
-        else if (monster.GetState() == 2)
+        else if (shark.GetState() == 2)
         {
             //agressive/Attacking
-            monster.Attack(player, gameObject, terrain, 3.5f);
+            shark.Attack(player, gameObject, terrain, 3.5f);
             if (debugMode)
                 print("attacking");
         }
-        else if (monster.GetState() == 3)
+        else if (shark.GetState() == 3)
         {
             //scared
             if (debugMode)
                 print("scared");
 
-            monster.Retreat(player, gameObject, terrain, 8f, maxSpeed / 2, lm);
+            shark.Retreat(player, gameObject, terrain, 8f, maxSpeed / 2, lm);
             //Retreat
             anim.Play("Retreat");
         }
-        else if (monster.GetState() == 4)
+        else if (shark.GetState() == 4)
         {
-            monster.Stationary(gameObject);
+            shark.Stationary(gameObject);
         }
 
-        if (monster.GetState() == 2)
+        if (transform.GetDistance(player) < 30 && shark.GetState() == 0)
+        {
+            //Start The Circle State
+            shark.SetState(2);
+        }
+
+        if (transform.GetDistance(player) < 25 && shark.GetState() == 2)
         {
             anim.Play("Attack");
             StartCoroutine(BiteAndRun());
+        }
+
+        if (transform.GetDistance(player) < 3 && shark.GetState() == 4)
+        {
+            shark.SetState(4);
+        }
+
+        //Count Down
+        if (shark.GetTimer() >= 0)
+            shark.CountDown();
+
+        //make a choice of wheather or not to attack
+        if (shark.GetTimer() <= 0 && decisionTime)
+        {
+            lastState = shark.GetState();
+            decisionTime = false;
+            var aggro = shark.GetAggro();
+
+            if (aggro >= 50)
+            {
+                shark.SetState(2);
+            }
+            else if (aggro < 50 && aggro > 25)
+            {
+                shark.SetState(0);
+            }
+            else if (aggro <= 25)
+            {
+                shark.SetState(3);
+            }
         }
 
         //Limiters
@@ -126,40 +163,31 @@ public class SeaMonsterScript : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -maxSpeed);
 
 
-        //if monster leaves bounds Delete it...
+        //if shark leaves bounds Delete it...
         if (Mathf.Abs(transform.position.x) > 200 || Mathf.Abs(transform.position.z) > 200)
         {
             DestroyImmediate(gameObject);
         }
     }
 
-    private void OnTriggerEnter(Collider coll)
-    {
-        if (coll.gameObject.tag == "Spear")
-        {
-            print(coll);
-            Debug.Log("I FUCKING HIT IT");
-        }
-    }
-
 
     IEnumerator BiteAndRun()
     {
-        yield return new WaitForSeconds(7f);
-        monster.SetState(4);
+        yield return new WaitForSeconds(2f);
+        shark.SetState(4);
         anim.Play("Retreat");
         yield return new WaitForSeconds(.5f);
         decisionTime = false;
-        monster.SetState(3);
+        shark.SetState(3);
         yield return new WaitForSeconds(8f);
-        monster.SetState(0);
+        shark.SetState(0);
     }
 
     public IEnumerator Hit()
     {
-        monster.SetState(3);
+        shark.SetState(3);
         yield return new WaitForSeconds(8f);
         decisionTime = false;
-        monster.SetState(0);
+        shark.SetState(0);
     }
 }
